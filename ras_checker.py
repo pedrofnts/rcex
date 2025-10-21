@@ -8,12 +8,12 @@ RESERVAS_PATH = "/FRMRESERVARVAGASERVIDOR.ASPX"
 ABERTURA_PATH = "/Abertura.aspx"
 ENCERRA_PATH = "/Encerra.aspx"
 
-# Valores padrão - serão lidos das variáveis de ambiente dentro de main()
-DIA_ALVO_BR = None
-OUTDIR = None
-TIMEOUT = None
-ALVOS_INPUT = None
-ANO_PADRAO = None
+DIA_ALVO_BR = os.environ.get("RAS_DIA", "22/11/2025")
+OUTDIR = os.environ.get("RAS_DEBUG_DIR", ".")
+TIMEOUT = int(os.environ.get("RAS_TIMEOUT", "30"))
+ALVOS_INPUT = os.environ.get("RAS_ALVOS", "").strip()
+ANO_PADRAO = os.environ.get("RAS_ANO", str(datetime.date.today().year))
+AUTO_RESERVA = os.environ.get("RAS_AUTO_RESERVA", "1").strip() not in ("0","false","False","no","n")
 
 def pr(x): print(x, flush=True)
 
@@ -115,16 +115,24 @@ def reservas_hidden_ids(html):
         out[i] = el.get("value","") if el else ""
     return out
 
-def extract_async_table_rows(ms_text):
+def extract_delta_hidden(ms_text):
+    out = {}
+    for m in re.finditer(r"\|hiddenField\|(__VIEWSTATEGENERATOR|__VIEWSTATE|__EVENTVALIDATION)\|([^\|]*)\|", ms_text):
+        out[m.group(1)] = m.group(2)
+    return out
+
+def extract_rows_with_buttons(ms_text):
     m = re.search(r"(<table[^>]+id=\"ctl00_CPC_dps_data_reserva_grd_dia\"[\s\S]+?</table>)", ms_text, re.I)
     if not m:
         m = re.search(r"(<table[\s\S]+?</table>)", ms_text, re.I)
         if not m:
-            return [], ""
+            return [], "", []
     table_html = m.group(1)
-    s = bs(table_html)
+    sdoc = bs(table_html)
     rows = []
-    for tr in s.find_all("tr"):
+    btns = []
+    trs = sdoc.find_all("tr")
+    for tr in trs:
         tds = tr.find_all("td")
         if len(tds) >= 4:
             data = tds[0].get_text(strip=True)
@@ -133,15 +141,16 @@ def extract_async_table_rows(ms_text):
             perfil = tds[3].get_text(strip=True)
             if data.lower() == "data":
                 continue
-            tem_botao = tds[4].find("input", {"value": re.compile("Confirmar", re.I)}) if len(tds) > 4 else None
-            rows.append({
-                "data": data,
-                "periodo": periodo,
-                "orgao": orgao,
-                "perfil": perfil,
-                "disponivel": bool(tem_botao)
-            })
-    return rows, table_html
+            btn_el = None
+            if len(tds) > 4:
+                btn_el = tds[4].find("input", {"type": re.compile("submit", re.I)})
+                if not btn_el:
+                    btn_el = tds[4].find("input", {"value": re.compile("Confirmar", re.I)})
+            btn_name = btn_el.get("name") if btn_el else None
+            btn_value = btn_el.get("value") if btn_el else None
+            rows.append({"data": data, "periodo": periodo, "orgao": orgao, "perfil": perfil, "disponivel": bool(btn_el)})
+            btns.append({"name": btn_name, "value": btn_value})
+    return rows, table_html, btns
 
 def base_of(url):
     u = urlparse(url)
@@ -175,9 +184,7 @@ def print_cookies(tag, jar):
     pairs = [f"{c.name}={c.value}" for c in jar]
     pr(f"[cookies:{tag}] {'; '.join(pairs) if pairs else '(vazio)'}")
 
-def follow_msajax_with_fallback(session, url_candidate, label, timeout=None):
-    if timeout is None:
-        timeout = TIMEOUT or 30
+def follow_msajax_with_fallback(session, url_candidate, label, timeout=TIMEOUT):
     try:
         pr(f"[{label}] follow -> {url_candidate}")
         r = session.get(url_candidate, timeout=timeout, allow_redirects=True)
@@ -325,20 +332,55 @@ def fetch_rows_for_date(session, base_url, uso_pk, dia_br, anomesref_hint=None):
     }
     rday = session.post(reservas_url_final, data=payload_async, headers=headers_ajax, timeout=TIMEOUT)
     dump(f"07b_post_async_{dia_br.replace('/','-')}", rday)
-    rows, table_html = extract_async_table_rows(rday.text)
+    hidden_delta = extract_delta_hidden(rday.text)
+    rows, table_html, btns = extract_rows_with_buttons(rday.text)
     if table_html:
         dump(f"09b_table_{dia_br.replace('/','-')}", table_html, suffix="fragment.html")
-    return rows
+    hidden_final = {
+        "__VIEWSTATE": hidden_delta.get("__VIEWSTATE", reservas_hidden.get("__VIEWSTATE","")),
+        "__VIEWSTATEGENERATOR": hidden_delta.get("__VIEWSTATEGENERATOR", reservas_hidden.get("__VIEWSTATEGENERATOR","")),
+        "__EVENTVALIDATION": hidden_delta.get("__EVENTVALIDATION", reservas_hidden.get("__EVENTVALIDATION","")),
+    }
+    return rows, btns, hidden_final, dps_hidden, reservas_url_final, dia_iso
+
+def reserve_row(session, base_url, uso_pk, hidden_fields, dps_hidden, reservas_url_final, dia_iso, btn_name, btn_value):
+    payload = {
+        "ctl00$ScriptManager1": f"ctl00$CPC$dps$upd_tela_resultado|{btn_name}",
+        "ctl00_ScriptManager1_HiddenField": "",
+        "ctl00$usopk": uso_pk or "",
+        "__EVENTTARGET": btn_name,
+        "__EVENTARGUMENT": "",
+        "__VIEWSTATE": hidden_fields.get("__VIEWSTATE",""),
+        "__VIEWSTATEGENERATOR": hidden_fields.get("__VIEWSTATEGENERATOR",""),
+        "__EVENTVALIDATION": hidden_fields.get("__EVENTVALIDATION",""),
+        "__VIEWSTATEENCRYPTED": "",
+        "__ASYNCPOST": "true",
+        btn_name: btn_value or "",
+        "ctl00$CPC$dps$hdanomesref": dps_hidden.get("ctl00_CPC_dps_hdanomesref",""),
+        "ctl00$CPC$dps$hdtipoperfilvaga": dps_hidden.get("ctl00_CPC_dps_hdtipoperfilvaga",""),
+        "ctl00$CPC$dps$hddepoid": dps_hidden.get("ctl00_CPC_dps_hddepoid",""),
+        "ctl00$CPC$dps$hdusuaid": dps_hidden.get("ctl00_CPC_dps_hdusuaid",""),
+        "ctl00$CPC$dps$hddias": "",
+        "ctl00$CPC$dps$hddiaselecionado": dia_iso,
+        "ctl00$CPC$dps$hdnPostControl": "0",
+        "ctl00$CPC$dps$data_reserva$hdusuaid": dps_hidden.get("ctl00_CPC_dps_hdusuaid",""),
+        "ctl00$CPC$dps$txtjustificativaCancelaReserva": "",
+        "ctl00$CPC$dps$hdcabcelareservavagaid": "",
+    }
+    headers_ajax = {
+        "X-Requested-With":"XMLHttpRequest",
+        "X-MicrosoftAjax":"Delta=true",
+        "Content-Type":"application/x-www-form-urlencoded; charset=UTF-8",
+        "Accept":"*/*",
+        "Origin": base_url,
+        "Referer": reservas_url_final,
+    }
+    r = session.post(reservas_url_final, data=payload, headers=headers_ajax, timeout=TIMEOUT)
+    dump("10_reserva_post", r)
+    ok = ("RESERVA EFETUADA" in r.text.upper()) or ("RESERVADA" in r.text.upper()) or ("SUCESSO" in r.text.upper())
+    return ok, r
 
 def main():
-    # Lê variáveis de ambiente no momento da execução
-    global DIA_ALVO_BR, OUTDIR, TIMEOUT, ALVOS_INPUT, ANO_PADRAO
-    DIA_ALVO_BR = os.environ.get("RAS_DIA", "22/11/2025")
-    OUTDIR = os.environ.get("RAS_DEBUG_DIR", ".")
-    TIMEOUT = int(os.environ.get("RAS_TIMEOUT", "30"))
-    ALVOS_INPUT = os.environ.get("RAS_ALVOS", "").strip()
-    ANO_PADRAO = os.environ.get("RAS_ANO", str(datetime.date.today().year))
-
     user, senha = ensure_creds()
     s = requests.Session()
     s.headers.update({"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/537.36 Chrome/120 Safari/537.36"})
@@ -453,12 +495,13 @@ def main():
         resultados = []
         for alvo in alvos:
             data_br = alvo["data_br"]
-            rows = fetch_rows_for_date(s, base_url, uso_pk, data_br)
+            rows, btns, hidden_fields, dps_hidden, reservas_url_final, dia_iso = fetch_rows_for_date(s, base_url, uso_pk, data_br)
             key = orgao_key_from_req(alvo["orgao_req"]) if alvo["orgao_req"] else None
             periodo_req = alvo["periodo"]
             dia_fmt = datetime.datetime.strptime(data_br, "%d/%m/%Y").strftime("%d/%m/%Y")
             match_idx = None
             match_row = None
+            match_btn = None
             for idx, r in enumerate(rows, start=1):
                 cond_data = r["data"].strip() == dia_fmt
                 cond_periodo = (periodo_req == "" or r["periodo"].strip() == periodo_req)
@@ -466,11 +509,18 @@ def main():
                 if cond_data and cond_periodo and cond_orgao:
                     match_idx = idx
                     match_row = r
+                    match_btn = btns[idx-1] if idx-1 < len(btns) else None
                     break
             if match_row:
                 resultados.append({"data": data_br, "orgao_req": alvo["orgao_req"], "periodo": periodo_req, "linha": match_idx, "disponivel": match_row["disponivel"], "orgao_real": match_row["orgao"]})
+                pr(f"[TARGET] {data_br} - {alvo['orgao_req']} - {periodo_req} -> {'DISPONÍVEL' if match_row['disponivel'] else 'OCUPADA'} (linha {match_idx})")
+                if AUTO_RESERVA and match_row["disponivel"] and match_btn and match_btn.get("name"):
+                    pr(f"[RESERVA] Disparando reserva da linha {match_idx} ({match_btn['name']})")
+                    ok, r = reserve_row(s, base_url, uso_pk, hidden_fields, dps_hidden, reservas_url_final, dia_iso, match_btn["name"], match_btn.get("value"))
+                    pr(f"[RESERVA] Resultado: {'OK' if ok else 'NOK'} | code={r.status_code}")
             else:
                 resultados.append({"data": data_br, "orgao_req": alvo["orgao_req"], "periodo": periodo_req, "linha": None, "disponivel": False, "orgao_real": None})
+                pr(f"[TARGET] {data_br} - {alvo['orgao_req']} - {periodo_req} -> NÃO ENCONTRADO")
         pr("\n=== Verificação de alvos ===")
         for r in resultados:
             status = "✓ DISPONÍVEL" if r["disponivel"] else "✗ Indisponível/Não encontrado"
