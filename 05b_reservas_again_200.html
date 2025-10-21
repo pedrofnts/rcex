@@ -1,0 +1,512 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl00_Head1"><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /><title>
+	
+        RASWEB
+</title>
+    
+    <link rel="stylesheet" type="text/css" href="CSS/jquery-ui.css" />
+    <script src="../js/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="../js/jquery-ui.js" type="text/javascript"></script>
+     <script src="../js/json2.js" type="text/javascript"></script>
+    <style type="text/css">
+        #ctl00_CPC_dps_txt_hora_mes, #ctl00_CPC_dps_txt_horas_util_mes, #ctl00_CPC_dps_txt_vagas_disp, #ctl00_CPC_dps_txt_mes_de_referencia
+        {
+            background: #FBF9EE;
+            color: #1A2B61;
+            font-weight: bold;
+        }
+        
+        /* FIXES */        
+        /* Corrigindo borda na grid */
+        tr.grd_dia_head th {color: White !important;}   
+
+
+        /*firefox hack*/
+        @-moz-document url-prefix() { 
+          .grd_dia_head th {border-color:#333333;} 
+          #ctl00_CPC_dps_uppgriddias tr {color:#333333 !important;}   
+        }
+        
+        /* esconder setas calendar */
+       .ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span  {display:none;}
+    </style>
+<link href="css/menu.css" rel="stylesheet" type="text/css" /><link href="css/stylemaster.css" rel="stylesheet" type="text/css" /><link href="Css/INTERFACE.css" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="Imagens/master/favicon.ico" />
+    <script type="text/javascript" language="JavaScript" src="js/funcoes.js" charset="utf-8"></script>
+    
+    <script type="text/javascript">
+        function cancelBack() {
+            if ((event.keyCode == 8 ||
+           (event.keyCode == 37 && event.altKey) ||
+           (event.keyCode == 39 && event.altKey))
+            &&
+           (event.srcElement.form == null || event.srcElement.isTextEdit == false)
+          ) {
+                event.cancelBubble = true;
+                event.returnValue = false;
+            }
+        }
+
+        function redirectpopup(address, popup) {
+            window.open(popup, 'PDF', 'width=1000,height=900,toolbar=yes,menubar=yes,resizeable=yes,scrollbars=yes');
+            // open(popup, 'janela', 'menubar=yes,scrollbars=yes,statusbar=yes,width=800, height=900,toolbar=0')         
+            sleep(50);
+            navigate(address);
+        }
+
+        function preventBackspace(e) {
+            var evt = e || window.event;
+            if (evt) {
+                var keyCode = evt.charCode || evt.keyCode;
+                if (keyCode === 8) {
+                    if (evt.preventDefault) {
+                        evt.preventDefault();
+                    } else {
+                        evt.returnValue = false;
+                        alert("This is a read only field");
+                    }
+                }
+                else {
+                    evt.returnValue = false;
+                    alert("This is a read only field");
+                }
+            }
+            else {
+                evt.returnValue = false;
+                alert("This is a read only field");
+            }
+        }
+
+        function sleep(milliseconds) { var start = new Date().getTime(); for (var i = 0; i < 1e7; i++) { if ((new Date().getTime() - start) > milliseconds) { break; } } }
+
+        // ###### Funcao para medir o tempo de execução da pagina no navegador do usuário !!! ########
+        var from_time = new Date();
+        from_time = from_time.getTime();
+        function show_loading_time() {
+            var to_time = new Date();
+            to_time = to_time.getTime();
+            var secs = (to_time - from_time) / 1000;
+            //document.form1.t.value = secs + " seconds";
+            // Tamanho e tipo da fonte
+            document.getElementById('t').style.fontSize = "10px";
+            document.getElementById('t').value = " Tempo de execução: " + secs + " segundos";
+        }
+         
+    </script>
+  
+<style type="text/css">
+	.ctl00_Menu1_0 { background-color:white;visibility:hidden;display:none;position:absolute;left:0px;top:0px; }
+	.ctl00_Menu1_1 { color:White;font-family:Verdana;font-size:0.8em;text-decoration:none; }
+	.ctl00_Menu1_2 { color:White;background-color:Blue;border-color:White;border-width:4px;border-style:Solid;font-family:Verdana;font-size:0.8em;width:140px; }
+	.ctl00_Menu1_3 { color:White;font-family:Tahoma;font-size:Small;border-style:none; }
+	.ctl00_Menu1_4 { background-color:#B7DBFF;border-color:#678FC2;border-width:2px;border-style:Solid;width:140px;padding:2px 5px 2px 5px; }
+	.ctl00_Menu1_5 { background-color:White;border-color:White;border-width:4px;border-style:Solid;width:140px;padding:4px 4px 4px 4px; }
+	.ctl00_Menu1_6 { color:Black;font-family:Tahoma;font-size:Small; }
+	.ctl00_Menu1_7 { background-color:#99CCFF;border-color:#648ABD;border-width:1px;border-style:Solid;width:140px;padding:2px 5px 2px 5px; }
+	.ctl00_Menu1_8 { background-color:#B5C7DE;border-style:None; }
+	.ctl00_Menu1_9 { font-family:Tahoma;font-size:Small; }
+	.ctl00_Menu1_10 { background-color:#507CD1; }
+	.ctl00_Menu1_11 { font-family:Tahoma;font-size:Small; }
+	.ctl00_Menu1_12 { background-color:#507CD1; }
+	.ctl00_Menu1_13 { color:Black;border-style:none; }
+	.ctl00_Menu1_14 { color:Black;background-color:#284E98;width:140px; }
+	.ctl00_Menu1_15 { color:Black;font-family:Tahoma;font-size:Small; }
+	.ctl00_Menu1_16 { color:Black;background-color:#284E98;font-family:Tahoma;font-size:Small; }
+
+</style></head>
+<body onkeydown="cancelBack();">
+    <div id="divao">
+        <form name="aspnetForm" method="post" action="./FRMRESERVARVAGASERVIDOR.ASPX" id="aspnetForm">
+<div>
+<input type="hidden" name="ctl00_ScriptManager1_HiddenField" id="ctl00_ScriptManager1_HiddenField" value="" />
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=gJVAH5R8maGnnZYu-RQttzlt2jjnBz8ABJMrGEZ-cEix_SGaO1XkKIdBjFqcWllIqVWY5cBynSZTKw4Jgy779a4LIVKFc1Gmw-ytfXoFs001&amp;t=638562453717896622" type="text/javascript"></script>
+
+
+<script src="/WebResource.axd?d=cigPtgEA-fUTw2S1p4dRM4qr1EG7gXUWT5DEwmWZBWS9G_KJjYF7-M2YS9XonWV8Ie5jO4MB-S-KOdyAKz7ufDnCSFR43kzHbFmSKK1W2eMspU1Ik-CwAj0qW9Uwh84E_rBgvusT_GHjTampOJPlkg2&amp;t=638919125342954256" type="text/javascript"></script>
+<script src="/WebResource.axd?d=SKKWLNpu02GO80_sBqtn9wg_qmMbg-AICmVYD4sTeSXyEHoDWN2lpV_RG_y-oN4AqTYYlFsmSTlZ5icfYiLW0k2LvJ8Csu3m2P3Ff-KG6zK-RdTbtgGGiZfusQ8pBxUwhKH90c8ckqtoxxqLmCwoSg2&amp;t=638919125342954256" type="text/javascript"></script><link href="/WebResource.axd?d=r3PQah16wNGyx6_u_CAuSZfriSidq_ScRurCAnIrHvuc32oHRhyB8-gDoq89kk2UkXUp1IzvK0pmaHL7-oqo9_2Vb1dgxGQaaCkUGbD2RlZbPckcUooUwN6gdQB6E4Kr0&t=638919125342954256" type="text/css" rel="stylesheet"></link><link href="/WebResource.axd?d=i7ADaksEXSzyeyOFY-OtrLN7Rk3_0E4Oz4gCNEZ7hJ5tpJDuWrhl1_oUlObXBC36-jqoV_aaaT-5P1WRm1x-DhBDPLwGcCyon3K0VTvNil_biZ9kFx-0mXuzG-V4Pc4REzFACOjGptCC9IGZ49E7nYz7XwQewP9lvjdpqtDUssI1&t=638919125342954256" type="text/css" rel="stylesheet"></link>
+<script src="/ScriptResource.axd?d=3GcPnUFMXyfJJWP-59NDcA_8fZpZj3f3WyI_Nvtxnjh1CjoWehAc9GgF0-mmtHQqrHKoO5_9rwYv1wzuA9foFrK1BkGFb4mJJBFabTVAYTfcaJ1Fl3EcJlE9clBGUAgVbFWczk4NpYlgYkYzOk4eCQ2&amp;t=ffffffffdc32f924" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('A estrutura do cliente do ASP.NET Ajax falhou ao ser carregada.');
+//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=yuJ2RcgvlOOdCaHXGGSE-PWVTrsLQ-1kjVAIcNFSau-IZ1dAp4HKUpD7lwdrdf-ru2QC9ggTbBiGvLxdu3mU3q_YhV8C2MfWjDO7V78OR8JFCUp8_9uvomPE2Mj7RMT7x6Goo6YyLUpJ-AzB3m5jRA2&amp;t=ffffffffdc32f924" type="text/javascript"></script>
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="3B430286" />
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="WKAZzbdhZ1e6bwZjcTBzT647H91xR97KvmKs0HCI97FEUvGCMG5uH/NCgdxoQ3YouqsMrD0E0I8AHLwnlG3U4Pz2oYmvYtLKKY8nznGftkvrIAQ00lA09+CV8ZMvxIoA4ktgsJKt/ZNs/9Az9040V/4MJztS09QFm4/2q8Mx68McRbQ5MbEjB6NBiXavuJUx4EJjJXaayoJo0fx9q7hF6eEeQOju38Zxu//bcnHbK5GCfAPLoFd5mKHZ7SCG5StX4/7UWObaMpYDtAUQEYh0fj0NNqkBOLFYjKUQAD2Lvy342D3p84mDMTee8cJgr+ipZTI/4wl7gIuIKOxAuMKH4WyTzQu1KUn3RA2Nz4YKNhViCZQbssmP6bvex14YbjAvc2SGMolo36N/L5LrAeXtyWheGWi/i4OPq82SNPft6ADsWeFHlrA3dVe8Gh2DcSNwDjyOocTHfuUt0PbiTfTxVnYjvDnjVDNOJNkQFdeI9ETYNva0IrU6gaXRsv8urKoAm+aTDO5RtPbuBRpjdnvRCYTnJAaY6gvf06xww9cif8YmWaXh67ObyUClmj/nMzJy2gsz2hYtCEvaPLfWynGoGdIrDLHHwWYeXRIoWcpJ2Lk6B693eWNEHpBiDgucbyL/" />
+</div>
+        
+        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', ['tctl00$UPDcabecalho','','tctl00$corpox','','tctl00$CPC$Upddistribuivbdps','','tctl00$CPC$dps$upp_calendar_reservar','','tctl00$CPC$dps$uppgriddias','','tctl00$CPC$dps$upd_tela_resultado','','tctl00$CPC$dps$uppJustCancelaReserva',''], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+        <center>
+            <div id="header">
+                <div id="ctl00_UPDcabecalho">
+	
+                        <a href="#" id="logo">
+                            <img src="imagens/login/logo.png" alt="Portal da Polícia Civil do Estado do Rio de Janeiro" /></a>
+                        <span id="sistema">
+                            <span id="ctl00_LBLsistema">RASWEB</span></span>
+                        <span id="versao">
+                            <span id="ctl00_LBLversao">Versão 3.51.0.22035 - Compilado em 27/08/2025 17:28:58</span></span>
+                        <div id="logoportal" title="Portal do Governo do Estado do Rio de Janeiro">
+                            <a href="http://www.rj.gov.br/" target="_blank">Portal do Governo do Estado do Rio de
+                                Janeiro</a></div>
+                       
+                        <span id="titulo">
+                            <span id="ctl00_LBL_Titulo" style="display:inline-block;width:100%;">RAS - Regime Adicional de Serviços</span></span>
+                        <span id="subtitulo">
+                            <span id="ctl00_LBL_subtitulo">Reserva de Vagas </span></span>
+                        <span id="usuario">
+                            <span id="ctl00_LBL_usuario"><b>Usuário: </b>5.022.239-2: JORDAN ARAGAO CAMELO</span></span>
+                        <span id="localidade">
+                            <span id="ctl00_LBL_localidade"><b>Lotação: </b>DEAM - Jacarepaguá - Inteligência</span></span>
+                        
+                        <span id="ctl00_lblusopk" style="display:none;">-1</span>
+                            <input type="hidden" name="ctl00$usopk" id="usopk" value="47431201" />
+                    
+</div>
+            </div>
+            <div id="content" style="height:700px;">
+                <div id="ctcpc">
+                    <table width="1000px" cellpadding="0" cellspacing="0" style="background-image: url('Imagens/master/bck_m_N2.png');
+                        background-repeat: no-repeat; background-position: 0px -3px">
+                        <tr>
+                            <td width="150px" valign="top" align="center" style="padding-top: 12px">
+                                
+<div class="PrettyMenu" id="ctl00_Menu1">
+	<div class="AspNet-Menu-Vertical">
+			<ul class="AspNet-Menu">
+				<li class="AspNet-Menu-WithChildren">
+					<span class="AspNet-Menu-NonLink">
+						RAS Extensão</span>
+					<ul>
+						<li class="AspNet-Menu-Leaf">
+							<a href="FRMRESERVARVAGASERVIDOR.ASPX" class="AspNet-Menu-Link">
+								Reservar Vagas</a>
+						</li>
+						<li class="AspNet-Menu-Leaf">
+							<a href="FRMDESISTENCIARESERVA.ASPX" class="AspNet-Menu-Link">
+								Desistência de Reserva</a>
+						</li>
+					</ul>
+				</li>
+				<li class="AspNet-Menu-WithChildren">
+					<span class="AspNet-Menu-NonLink">
+						RAS Presente</span>
+					<ul>
+						<li class="AspNet-Menu-Leaf">
+							<a href="FRMRESERVAPRESENTE.ASPX" class="AspNet-Menu-Link">
+								Reservar Vagas</a>
+						</li>
+						<li class="AspNet-Menu-Leaf">
+							<a href="FRMDESISTENCIARESERVAPRESENTE.ASPX" class="AspNet-Menu-Link">
+								Desistência de Reserva</a>
+						</li>
+					</ul>
+				</li>
+				<li class="AspNet-Menu-WithChildren">
+					<span class="AspNet-Menu-NonLink">
+						Relatórios</span>
+					<ul>
+						<li class="AspNet-Menu-Leaf">
+							<a href="frmRelatorioRasServidor.aspx" class="AspNet-Menu-Link">
+								RAS Servidor</a>
+						</li>
+					</ul>
+				</li>
+				<li class="AspNet-Menu-WithChildren">
+					<span class="AspNet-Menu-NonLink">
+						Suporte</span>
+					<ul>
+						<li class="AspNet-Menu-Leaf">
+							<a href="alter_pwd.aspx" class="AspNet-Menu-Link">
+								Alterar Senha</a>
+						</li>
+					</ul>
+				</li>
+				<li class="AspNet-Menu-Leaf">
+					<a href="Encerra.aspx?uso_pk=47431201" class="AspNet-Menu-Link" target="_self" title="Sair do Sistema">
+						Sair</a>
+				</li>
+			</ul>
+
+	</div>
+</div>
+                            </td>
+                            
+                            
+                            <td width="862px" valign="top" align="center">
+                                <div style="height: 600px">
+                                    <div id="ctl00_corpox">
+	
+                                            
+    
+        <div id="ctl00_CPC_Upddistribuivbdps">
+		
+                <div id="ctl00_CPC_dps_div_principal" class="divPrincipal">
+    
+    <div id="ctl00_CPC_dps_pnl_reservar_vagas" style="border: 1px solid #000;
+        top: 4px; left: 2px; height: 80px; width: 408px; position: absolute;">
+			
+        
+        <span id="ctl00_CPC_dps_lbl_mes_de_referencia" title="Período onde poderá ser feita a reserva de vagas." style="top: 20px;
+            left: 40px; position: absolute; color: #000;">Mês de referência:</span>
+        <input name="ctl00$CPC$dps$txt_mes_de_referencia" type="text" value="Novembro/2025" readonly="readonly" id="ctl00_CPC_dps_txt_mes_de_referencia" style="width:100px;top: 35px; left: 40px;
+            position: absolute;" />
+        
+        <span id="ctl00_CPC_dps_Label3" style="top: 20px; left: 190px;
+            position: absolute; color: #000;">Tipo serviço:</span>
+        <select name="ctl00$CPC$dps$drpTipoPerfil" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$CPC$dps$drpTipoPerfil\&#39;,\&#39;\&#39;)&#39;, 0)" id="ctl00_CPC_dps_drpTipoPerfil" style="top: 35px; left: 190px;
+            position: absolute; width: 180px;">
+				<option selected="selected" value="3">F&#233;rias</option>
+
+			</select>
+    
+		</div>
+    
+    <div id="ctl00_CPC_dps_pnlHoras" style="border: 1px solid #000; top: 4px;
+        left: 415px; height: 80px; width: 408px; position: absolute;">
+			
+        <span id="ctl00_CPC_dps_lbl_reservar_vagas" style="background-color:White;font-weight:bold;top: -6px;
+            left: 4px; position: absolute; z-index: 10000; padding-left: 5px; padding-right: 5px;
+            color: #000;">Horas</span>
+        
+        <span id="ctl00_CPC_dps_lbl_hora_mes" style="top: 20px; left: 70px;
+            position: absolute; color: #000;">Total:</span>
+        <input name="ctl00$CPC$dps$txt_hora_mes" type="text" value="120" readonly="readonly" id="ctl00_CPC_dps_txt_hora_mes" tabindex="5" onkeydown="return false;" style="top: 35px;
+            left: 70px; position: absolute; width: 54px;" />
+        
+        <span id="ctl00_CPC_dps_lbl_horas_util_mes" style="top: 20px;
+            left: 120px; position: absolute; color: #000; width: 150px;">Utilizada:</span>
+        <input name="ctl00$CPC$dps$txt_horas_util_mes" type="text" value="0" readonly="readonly" id="ctl00_CPC_dps_txt_horas_util_mes" tabindex="20" onkeydown="return false;" style="top: 35px;
+            left: 170px; position: absolute; width: 54px;" />
+        
+        <span id="ctl00_CPC_dps_lbl_vagas_disp" style="top: 20px;
+            left: 243px; position: absolute; color: #000; width: 115px;">Disponível:</span>
+        <input name="ctl00$CPC$dps$txt_vagas_disp" type="text" value="120" readonly="readonly" id="ctl00_CPC_dps_txt_vagas_disp" tabindex="35" onkeydown="return false;" style="top: 35px;
+            left: 270px; position: absolute; width: 54px;" />
+    
+		</div>
+    
+    <div style="left: 2px; top: 92px; border: none; position: absolute; width: 408px;
+        height: 480px; background-color: #DAE9E9; border: 1px solid #000;">
+        <img src="../imagens/calendario-blur.png" style="position: absolute; left: 4px; top: 88px;
+            width: 400px; height: 382px;" alt="Carregando Vagas" />
+        <img src="imagens/gif-load.gif" id="ctl00_CPC_dps_gif_load" style="position: absolute;
+            top: 240px; left: 150px;" alt="Carregando Vagas" />
+    </div>
+    <div id="ctl00_CPC_dps_pnl_selecione_delegacia" onkeypress="javascript:return WebForm_FireDefaultButton(event, &#39;ctl00_CPC_dps_btnFiltrar&#39;)" style="border: none; top: 85px; left: 8px; height: 60px; width: 400px; position: absolute;">
+			
+        <span id="ctl00_CPC_dps_lbl_nome" style="font-weight:bold;top: 18px; left: 5px; position: absolute; color: #000;">Órgãos com vagas disponíveis:</span>
+        <select name="ctl00$CPC$dps$drp_selecione_delegacia" id="ctl00_CPC_dps_drp_selecione_delegacia" disabled="disabled" tabindex="50" style="top: 34px; left: 5px;
+            position: absolute; width: 285px;">
+
+			</select>
+        <input type="submit" name="ctl00$CPC$dps$btnFiltrar" value="Filtrar" id="ctl00_CPC_dps_btnFiltrar" tabindex="51" style="color:Black;width: 94px; position: absolute;
+            left: 299px; top: 33px; cursor: pointer;" />
+    
+		</div>
+    
+    <div id="ctl00_CPC_dps_pnl_calendar_reservar" title="Selecione um dia para reservar a sua vaga." style="top: 170px; left: 6px;
+        height: 395px; width: 400px; position: absolute;">
+			
+        <div id="ctl00_CPC_dps_upp_calendar_reservar">
+				
+                <span id="ctl00_CPC_dps_lbl_calendar_reservar" style="font-weight:bold;top: -7px; left: 5px; position: absolute; z-index: 10000; padding-right: 5px;
+                    color: #000;">Selecione o dia desejado:</span>
+                <span id="ctl00_CPC_dps_lblUltimaAtualizacao" style="top: -5px; left: 189px;
+                    position: absolute; font-size: x-small; z-index: 10000; width: 215px; padding-right: 5px;
+                    color: #000;"></span>
+                <div id="datepicker" style="position: absolute; width: auto; top: -10px; left: -12px;
+                    width: 408px; height: 375px; margin-top: 20px; margin-left: 10px;">
+                    
+                </div>
+            
+			</div>
+    
+		</div>
+    <div id="ctl00_CPC_dps_Panel1" style="top: 0px; left: 415px; height: 395px;
+        width: 400px; position: absolute;">
+			
+        <div style="left: 0px; top: 92px; border: none; position: absolute; width: 408px;
+            height: 480px; border: 1px solid #000;">
+            <span id="ctl00_CPC_dps_Label1" style="background-color:White;font-weight:bold;top: -6px;
+                left: 4px; position: absolute; z-index: 10000; padding-left: 5px; padding-right: 5px;
+                color: #000;">Vagas reservadas</span>
+            
+            <input type="submit" name="ctl00$CPC$dps$btnRelatorioVagaReservada" value="Vagas reservadas" id="ctl00_CPC_dps_btnRelatorioVagaReservada" tabindex="51" title="Clique para imprimir as vagas reservadas por você" style="color:Black;position: absolute;
+                width: 110px; left: 290px; top: 10px; cursor: pointer;" />
+            <div id="ctl00_CPC_dps_uppgriddias">
+				
+                    <div style="position: absolute; width: 397px; height: 420px; top: 44px; left: 5px;
+                        overflow-y: scroll; background: #FFFFCC; border: 1px solid #000;">
+                        <div>
+
+				</div>
+                    </div>
+                
+			</div>
+        </div>
+    
+		</div>
+    <input type="hidden" name="ctl00$CPC$dps$hdanomesref" id="ctl00_CPC_dps_hdanomesref" value="202511" />
+    <input type="hidden" name="ctl00$CPC$dps$hdtipoperfilvaga" id="ctl00_CPC_dps_hdtipoperfilvaga" value="3" />
+    <input type="hidden" name="ctl00$CPC$dps$hddepoid" id="ctl00_CPC_dps_hddepoid" value="0" />
+    <input type="hidden" name="ctl00$CPC$dps$hdusuaid" id="ctl00_CPC_dps_hdusuaid" value="27425" />
+    <input type="hidden" name="ctl00$CPC$dps$hddias" id="ctl00_CPC_dps_hddias" />
+    <input type="hidden" name="ctl00$CPC$dps$hddiaselecionado" id="ctl00_CPC_dps_hddiaselecionado" />
+    <input type="hidden" name="ctl00$CPC$dps$hdnPostControl" id="ctl00_CPC_dps_hdnPostControl" value="0" />
+    
+    <input type="submit" name="ctl00$CPC$dps$btn_teste" value="teste" id="ctl00_CPC_dps_btn_teste" tabindex="55" class="botao" style="color:Black;width: 100px;
+        display: none; position: absolute; left: 685px; top: 205px; cursor: pointer;" />
+    <input type="submit" name="ctl00$CPC$dps$btninvocadetalhe" value="teste" id="ctl00_CPC_dps_btninvocadetalhe" tabindex="55" style="color:Black;width: 100px;
+        display: none; position: absolute; left: 585px; top: 205px; cursor: pointer;" />
+    <script type="text/javascript">
+        var psdti = ''
+    </script>
+    
+    <script type="text/javascript" language="JavaScript" src="../usercontrol/ReservarVagaServidor.ascx.js"
+        charset="utf-8"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/mode-cfb-min.js"></script>
+</div>
+
+<div id="ctl00_CPC_dps_div_tela_resultado" style="display: none; z-index: 10050;
+    position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background: url(../imagens/login/bg-popup.png);">
+    <div id="ctl00_CPC_dps_upd_tela_resultado">
+			
+            <div id="ctl00_CPC_dps_Div13" style="margin-left: -390px; margin-top: -270px; top: 50%;
+                left: 50%; width: 905px; height: 540px; color: #000000; background: #FFFFFF;
+                position: absolute; border: 1px solid #d0d0d0;">
+                <div id="ctl00_CPC_dps_Div15" style="background-color: #1A2B61; width: 100%; height: 20px;
+                    padding-top: 3px; padding-left: 0px; margin-bottom: 10px; text-align: left;">
+                    <a id="ctl00_CPC_dps_A3" style="text-decoration: none; font-weight: bold; font: normal 14px arial;
+                        color: #FFFFFF; margin-left: 5px;">Reservar Vagas</a>
+                </div>
+                <div id="ctl00_CPC_dps_Div16">
+                    <div id="ctl00_CPC_dps_data_reserva_div_principal" style="top: 2px; left: 0px; height: 535px; width: 900px; position: relative;">
+    <div id="ctl00_CPC_dps_data_reserva_pnl_dias" style="background-color:#FFFFCC;left: 5px; height: auto; width: 820px; position: absolute;">
+				
+        
+        <div style="border-style: solid; border-width: 1px; overflow: auto; position: absolute; left: 5px; top: 5px; width: 880px; height: 460px;">
+            <div>
+
+				</div>
+        </div>
+    
+			</div>
+    <input type="hidden" name="ctl00$CPC$dps$data_reserva$hdusuaid" id="ctl00_CPC_dps_data_reserva_hdusuaid" />
+    <input type="submit" name="ctl00$CPC$dps$data_reserva$btn_Voltar" value="Voltar" id="ctl00_CPC_dps_data_reserva_btn_Voltar" tabindex="55" style="color:Black;width: 100px; position: absolute; left: 365px; top: 473px;" />
+</div>
+                </div>
+            </div>
+        
+		</div>
+</div>
+<div id="ctl00_CPC_dps_div_justificativa_Cancela_Reserva" style="display: none;
+    z-index: 10050; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;
+    background: url(../imagens/login/bg-popup.png);">
+    <div id="ctl00_CPC_dps_uppJustCancelaReserva">
+			
+            <div id="ctl00_CPC_dps_Div2" style="margin-left: -250px; margin-top: -150px; top: 50%;
+                left: 50%; width: 505px; height: 240px; color: #000000; background: #FFFFFF;
+                position: absolute; border: 1px solid #d0d0d0;">
+                <div id="ctl00_CPC_dps_Div3" style="background-color: #1A2B61; width: 100%; height: 20px;
+                    padding-top: 3px; padding-left: 0px; margin-bottom: 10px; text-align: left;">
+                    <a id="ctl00_CPC_dps_A1" style="text-decoration: none; font-weight: bold; font: normal 14px arial;
+                        color: #FFFFFF; margin-left: 5px;">Remover Reserva</a>
+                </div>
+                <div id="ctl00_CPC_dps_Div4">
+                    
+                    <span id="ctl00_CPC_dps_Label4" style="top: 35px; left: 4px;
+                        position: absolute; color: #000;">Justificativa:</span>
+                    <textarea name="ctl00$CPC$dps$txtjustificativaCancelaReserva" rows="2" cols="20" id="ctl00_CPC_dps_txtjustificativaCancelaReserva" style="height:135px;width:485px;top: 60px;
+                        left: 4px; position: absolute;">
+</textarea>
+                    <input type="submit" name="ctl00$CPC$dps$btnCancelaReserva" value="Remover Reserva" onclick="return confirm(&#39;Você tem certeza que deseja cancelar essa reserva?&#39;);" id="ctl00_CPC_dps_btnCancelaReserva" tabindex="1" style="color:Black;width: 110px; position: absolute; left: 270px; top: 205px;
+                        cursor: pointer;" />
+                    <input type="submit" name="ctl00$CPC$dps$btnRetornarCancelaReserva" value="Retornar" id="ctl00_CPC_dps_btnRetornarCancelaReserva" style="color:Black;width: 110px;
+                        position: absolute; left: 390px; top: 205px; cursor: pointer;" />
+                    <input type="hidden" name="ctl00$CPC$dps$hdcabcelareservavagaid" id="ctl00_CPC_dps_hdcabcelareservavagaid" />
+                </div>
+            </div>
+        
+		</div>
+</div>
+
+            
+	</div>
+   
+
+                                        
+</div>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+            <div id="foot">
+                <input name="t2" value="POLÍCIA CIVIL DO ESTADO DO RIO DE JANEIRO - TODOS OS DIREITOS RESERVADOS"
+                    readonly="readonly" style="border-style: none; color: #ffffff; font-size: 11px;
+                    text-align: left; font-family: Arial, Helvetica, sans-serif; background-color: #4a74b0;
+                    height: 20px;" maxlength="50" size="80" /><br />
+                
+            </div>
+            <!--Fecha FOOTER-->
+        </center>
+        
+        <div id="ctl00_PRGatualiza" style="display:none;">
+	
+                <div id="DivAguarde2">
+                    <img src="Imagens/login/aguarde100-118.gif" style="margin-top: 20%; margin-left: 0%;"
+                        alt="Aguarde" />
+                </div>
+            
+</div>
+        
+
+<script type="text/javascript">
+//<![CDATA[
+(function() {var fn = function() {$get("ctl00_ScriptManager1_HiddenField").value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();Sys.Application.add_init(function() {
+    $create(Sys.UI._UpdateProgress, {"associatedUpdatePanelId":"ctl00_corpox","displayAfter":100,"dynamicLayout":true}, null, null, $get("ctl00_PRGatualiza"));
+});
+//]]>
+</script>
+</form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl00_Head1"><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /><title>
+	
+        RASWEB
+</title>
+<link href="css/menu.css" rel="stylesheet" type="text/css" /><link href="css/stylemaster.css" rel="stylesheet" type="text/css" /><link href="Css/INTERFACE.css" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="Imagens/master/favicon.ico" />
+    <script type="text/javascript" language="JavaScript" src="js/funcoes.js" charset="utf-8"></script>
+    
+    <script type="text/javascript">
+        function cancelBack() {
+            if ((event.keyCode == 8 ||
+           (event.keyCode == 37 && event.altKey) ||
+           (event.keyCode == 39 && event.altKey))
+            &&
+           (event.srcElement.form == null || event.srcElement.isTextEdit == false)
+          ) {
+                event.cancelBubble = true;
+                event.returnValue = false;
+            }
+        }
+
+        function redirectpopup(address, popup) {
+            window.open(popup, 'PDF', 'width=1000,height=900,toolbar=yes,menubar=yes,resizeable=yes,scrollbars=yes');
+            // open(popup, 'janela', 'menubar=yes,scrollbars=yes,statusbar=yes,width=800, height=900,toolbar=0')         
+            sleep(50);
+            navigate(address);
+        }
+
+        function preventBackspace(e) {
+            var evt = e || window.event;
+            if (evt) {
+                var keyCode = evt.charCode || evt.keyCode;
+                if (keyCode === 8) {
+                    if (evt.preventDefault) {
+                        evt.preventDefault();
+                    } else {
+                        evt.returnValue = false;
+                        alert("This is a read only field");
+                    }
+                }
+                else {
+                    evt.returnValue = false;
+                    alert("This is a read only field");
+                }
+            }
+            else {
+                evt.returnValue = false;
+                alert("This is a read only field");
+            }
+        }
+
+        function sleep(milliseconds) { var start = new Date().getTime(); for (var i = 0; i < 1e7; i++) { if ((new Date().getTime() - start) > milliseconds) { break; } } }
+
+        // ###### Funcao para medir o tempo de execução da pagina no navegador do usuário !!! ########
+        var from_time = new Date();
+        from_time = from_time.getTime();
+        function show_loading_time() {
+            var to_time = new Date();
+            to_time = to_time.getTime();
+            var secs = (to_time - from_time) / 1000;
+            //document.form1.t.value = secs + " seconds";
+            // Tamanho e tipo da fonte
+            document.getElementById('t').style.fontSize = "10px";
+            document.getElementById('t').value = " Tempo de execução: " + secs + " segundos";
+        }
+         
+    </script>
+  
+<style type="text/css">
+	.ctl00_Menu1_0 { background-color:white;visibility:hidden;display:none;position:absolute;left:0px;top:0px; }
+	.ctl00_Menu1_1 { color:White;font-family:Verdana;font-size:0.8em;text-decoration:none; }
+	.ctl00_Menu1_2 { color:White;background-color:Blue;border-color:White;border-width:4px;border-style:Solid;font-family:Verdana;font-size:0.8em;width:140px; }
+	.ctl00_Menu1_3 { color:White;font-family:Tahoma;font-size:Small;border-style:none; }
+	.ctl00_Menu1_4 { background-color:#B7DBFF;border-color:#678FC2;border-width:2px;border-style:Solid;width:140px;padding:2px 5px 2px 5px; }
+	.ctl00_Menu1_5 { background-color:White;border-color:White;border-width:4px;border-style:Solid;width:140px;padding:4px 4px 4px 4px; }
+	.ctl00_Menu1_6 { color:Black;font-family:Tahoma;font-size:Small; }
+	.ctl00_Menu1_7 { background-color:#99CCFF;border-color:#648ABD;border-width:1px;border-style:Solid;width:140px;padding:2px 5px 2px 5px; }
+	.ctl00_Menu1_8 { background-color:#B5C7DE;border-style:None; }
+	.ctl00_Menu1_9 { font-family:Tahoma;font-size:Small; }
+	.ctl00_Menu1_10 { background-color:#507CD1; }
+	.ctl00_Menu1_11 { font-family:Tahoma;font-size:Small; }
+	.ctl00_Menu1_12 { background-color:#507CD1; }
+	.ctl00_Menu1_13 { color:Black;border-style:none; }
+	.ctl00_Menu1_14 { color:Black;background-color:#284E98;width:140px; }
+	.ctl00_Menu1_15 { color:Black;font-family:Tahoma;font-size:Small; }
+	.ctl00_Menu1_16 { color:Black;background-color:#284E98;font-family:Tahoma;font-size:Small; }
+
+</style></head>
+<body onkeydown="cancelBack();">
+    <div id="divao">
+        <form name="aspnetForm" method="post" action="./Abertura.aspx?uso_pk=47431201" id="aspnetForm">
+<div>
+<input type="hidden" name="ctl00_ScriptManager1_HiddenField" id="ctl00_ScriptManager1_HiddenField" value="" />
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTE2NDYzNjY5MQ9kFgJmD2QWAgIDD2QWBAIDD2QWAmYPZBYMAgEPDxYCHgRUZXh0BQZSQVNXRUJkZAIDDw8WAh8ABTdWZXJzw6NvIDMuNTEuMC4yMjAzNSAtIENvbXBpbGFkbyBlbSAyNy8wOC8yMDI1IDE3OjI4OjU4ZGQCBQ8PFgIfAAUjUkFTIC0gUmVnaW1lIEFkaWNpb25hbCBkZSBTZXJ2acOnb3NkZAIHDw8WAh8AZWRkAgkPDxYCHwAFMjxiPlVzdcOhcmlvOiA8L2I+NS4wMjIuMjM5LTI6IEpPUkRBTiBBUkFHQU8gQ0FNRUxPZGQCCw8PFgIfAAU1PGI+TG90YcOnw6NvOiA8L2I+REVBTSAtIEphY2FyZXBhZ3XDoSAtIEludGVsaWfDqm5jaWFkZAIFEDwrAA0BDBQrAAYFEzA6MCwwOjEsMDoyLDA6MywwOjQUKwACFggfAAUNUkFTIEV4dGVuc8Ojbx4FVmFsdWUFAjcyHgpTZWxlY3RhYmxlaB4HVG9vbFRpcAUNUkFTIEV4dGVuc8OjbxQrAAMFBzA6MCwwOjEUKwACFgYfAAUOUmVzZXJ2YXIgVmFnYXMfAQUDNjA4HgtOYXZpZ2F0ZVVybAUcRlJNUkVTRVJWQVJWQUdBU0VSVklET1IuQVNQWGQUKwACFgYfAAUXRGVzaXN0w6puY2lhIGRlIFJlc2VydmEfAQUDNjEwHwQFGkZSTURFU0lTVEVOQ0lBUkVTRVJWQS5BU1BYZBQrAAIWCB8ABQxSQVMgUHJlc2VudGUfAQUCNTYfAmgfAwUMUkFTIFByZXNlbnRlFCsAAwUHMDowLDA6MRQrAAIWBh8ABQ5SZXNlcnZhciBWYWdhcx8BBQM5MzcfBAUXRlJNUkVTRVJWQVBSRVNFTlRFLkFTUFhkFCsAAhYGHwAFF0Rlc2lzdMOqbmNpYSBkZSBSZXNlcnZhHwEFAzk2NR8EBSJGUk1ERVNJU1RFTkNJQVJFU0VSVkFQUkVTRU5URS5BU1BYZBQrAAIWCB8ABQtSZWxhdMOzcmlvcx8BBQI3MB8CaB8DBQtSZWxhdMOzcmlvcxQrAAIFAzA6MBQrAAIWBh8ABQxSQVMgU2Vydmlkb3IfAQUDNTk2HwQFHGZybVJlbGF0b3Jpb1Jhc1NlcnZpZG9yLmFzcHhkFCsAAhYIHwAFB1N1cG9ydGUfAQUCNjcfAmgfAwUHU3Vwb3J0ZRQrAAIFAzA6MBQrAAIWBh8ABQ1BbHRlcmFyIFNlbmhhHwEFAzU5MR8EBQ5hbHRlcl9wd2QuYXNweGQUKwACFgofAAUEU2Fpch8BBQEwHwQFHEVuY2VycmEuYXNweD91c29fcGs9NDc0MzEyMDEeBlRhcmdldAUFX3NlbGYfAwUPU2FpciBkbyBTaXN0ZW1hZGRkZL+PPme2j5p9frf5GkvoXCf+n0l/M02uB5Yr6WM/zqn+" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=gJVAH5R8maGnnZYu-RQttzlt2jjnBz8ABJMrGEZ-cEix_SGaO1XkKIdBjFqcWllIqVWY5cBynSZTKw4Jgy779a4LIVKFc1Gmw-ytfXoFs001&amp;t=638562453717896622" type="text/javascript"></script>
+
+
+<script src="/WebResource.axd?d=cigPtgEA-fUTw2S1p4dRM4qr1EG7gXUWT5DEwmWZBWS9G_KJjYF7-M2YS9XonWV8Ie5jO4MB-S-KOdyAKz7ufDnCSFR43kzHbFmSKK1W2eMspU1Ik-CwAj0qW9Uwh84E_rBgvusT_GHjTampOJPlkg2&amp;t=638919125342954256" type="text/javascript"></script>
+<script src="/WebResource.axd?d=SKKWLNpu02GO80_sBqtn9wg_qmMbg-AICmVYD4sTeSXyEHoDWN2lpV_RG_y-oN4AqTYYlFsmSTlZ5icfYiLW0k2LvJ8Csu3m2P3Ff-KG6zK-RdTbtgGGiZfusQ8pBxUwhKH90c8ckqtoxxqLmCwoSg2&amp;t=638919125342954256" type="text/javascript"></script><link href="/WebResource.axd?d=r3PQah16wNGyx6_u_CAuSZfriSidq_ScRurCAnIrHvuc32oHRhyB8-gDoq89kk2UkXUp1IzvK0pmaHL7-oqo9_2Vb1dgxGQaaCkUGbD2RlZbPckcUooUwN6gdQB6E4Kr0&t=638919125342954256" type="text/css" rel="stylesheet"></link><link href="/WebResource.axd?d=i7ADaksEXSzyeyOFY-OtrLN7Rk3_0E4Oz4gCNEZ7hJ5tpJDuWrhl1_oUlObXBC36-jqoV_aaaT-5P1WRm1x-DhBDPLwGcCyon3K0VTvNil_biZ9kFx-0mXuzG-V4Pc4REzFACOjGptCC9IGZ49E7nYz7XwQewP9lvjdpqtDUssI1&t=638919125342954256" type="text/css" rel="stylesheet"></link>
+<script src="/ScriptResource.axd?d=3GcPnUFMXyfJJWP-59NDcA_8fZpZj3f3WyI_Nvtxnjh1CjoWehAc9GgF0-mmtHQqrHKoO5_9rwYv1wzuA9foFrK1BkGFb4mJJBFabTVAYTfcaJ1Fl3EcJlE9clBGUAgVbFWczk4NpYlgYkYzOk4eCQ2&amp;t=ffffffffdc32f924" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('A estrutura do cliente do ASP.NET Ajax falhou ao ser carregada.');
+//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=yuJ2RcgvlOOdCaHXGGSE-PWVTrsLQ-1kjVAIcNFSau-IZ1dAp4HKUpD7lwdrdf-ru2QC9ggTbBiGvLxdu3mU3q_YhV8C2MfWjDO7V78OR8JFCUp8_9uvomPE2Mj7RMT7x6Goo6YyLUpJ-AzB3m5jRA2&amp;t=ffffffffdc32f924" type="text/javascript"></script>
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="FEF9FA28" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAKTW41F4fTxSFPKhYyT/at/MEKWAMo8jH960EssgyjpMq16EorchdIW5hMJ/aimGvoPJjPa19UZ7sXCY8khyZl+" />
+</div>
+        
+        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', ['tctl00$UPDcabecalho','','tctl00$corpox',''], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+        <center>
+            <div id="header">
+                <div id="ctl00_UPDcabecalho">
+	
+                        <a href="#" id="logo">
+                            <img src="imagens/login/logo.png" alt="Portal da Polícia Civil do Estado do Rio de Janeiro" /></a>
+                        <span id="sistema">
+                            <span id="ctl00_LBLsistema">RASWEB</span></span>
+                        <span id="versao">
+                            <span id="ctl00_LBLversao">Versão 3.51.0.22035 - Compilado em 27/08/2025 17:28:58</span></span>
+                        <div id="logoportal" title="Portal do Governo do Estado do Rio de Janeiro">
+                            <a href="http://www.rj.gov.br/" target="_blank">Portal do Governo do Estado do Rio de
+                                Janeiro</a></div>
+                       
+                        <span id="titulo">
+                            <span id="ctl00_LBL_Titulo" style="display:inline-block;width:100%;">RAS - Regime Adicional de Serviços</span></span>
+                        <span id="subtitulo">
+                            <span id="ctl00_LBL_subtitulo"></span></span>
+                        <span id="usuario">
+                            <span id="ctl00_LBL_usuario"><b>Usuário: </b>5.022.239-2: JORDAN ARAGAO CAMELO</span></span>
+                        <span id="localidade">
+                            <span id="ctl00_LBL_localidade"><b>Lotação: </b>DEAM - Jacarepaguá - Inteligência</span></span>
+                        
+                        <span id="ctl00_lblusopk" style="display:none;">-1</span>
+                            <input type="hidden" name="ctl00$usopk" id="usopk" value="47431201" />
+                    
+</div>
+            </div>
+            <div id="content" style="height:700px;">
+                <div id="ctcpc">
+                    <table width="1000px" cellpadding="0" cellspacing="0" style="background-image: url('Imagens/master/bck_m_N2.png');
+                        background-repeat: no-repeat; background-position: 0px -3px">
+                        <tr>
+                            <td width="150px" valign="top" align="center" style="padding-top: 12px">
+                                
+<div class="PrettyMenu" id="ctl00_Menu1">
+	<div class="AspNet-Menu-Vertical">
+			<ul class="AspNet-Menu">
+				<li class="AspNet-Menu-WithChildren">
+					<span class="AspNet-Menu-NonLink">
+						RAS Extensão</span>
+					<ul>
+						<li class="AspNet-Menu-Leaf">
+							<a href="FRMRESERVARVAGASERVIDOR.ASPX" class="AspNet-Menu-Link">
+								Reservar Vagas</a>
+						</li>
+						<li class="AspNet-Menu-Leaf">
+							<a href="FRMDESISTENCIARESERVA.ASPX" class="AspNet-Menu-Link">
+								Desistência de Reserva</a>
+						</li>
+					</ul>
+				</li>
+				<li class="AspNet-Menu-WithChildren">
+					<span class="AspNet-Menu-NonLink">
+						RAS Presente</span>
+					<ul>
+						<li class="AspNet-Menu-Leaf">
+							<a href="FRMRESERVAPRESENTE.ASPX" class="AspNet-Menu-Link">
+								Reservar Vagas</a>
+						</li>
+						<li class="AspNet-Menu-Leaf">
+							<a href="FRMDESISTENCIARESERVAPRESENTE.ASPX" class="AspNet-Menu-Link">
+								Desistência de Reserva</a>
+						</li>
+					</ul>
+				</li>
+				<li class="AspNet-Menu-WithChildren">
+					<span class="AspNet-Menu-NonLink">
+						Relatórios</span>
+					<ul>
+						<li class="AspNet-Menu-Leaf">
+							<a href="frmRelatorioRasServidor.aspx" class="AspNet-Menu-Link">
+								RAS Servidor</a>
+						</li>
+					</ul>
+				</li>
+				<li class="AspNet-Menu-WithChildren">
+					<span class="AspNet-Menu-NonLink">
+						Suporte</span>
+					<ul>
+						<li class="AspNet-Menu-Leaf">
+							<a href="alter_pwd.aspx" class="AspNet-Menu-Link">
+								Alterar Senha</a>
+						</li>
+					</ul>
+				</li>
+				<li class="AspNet-Menu-Leaf">
+					<a href="Encerra.aspx?uso_pk=47431201" class="AspNet-Menu-Link" target="_self" title="Sair do Sistema">
+						Sair</a>
+				</li>
+			</ul>
+
+	</div>
+</div>
+                            </td>
+                            
+                            
+                            <td width="862px" valign="top" align="center">
+                                <div style="height: 600px">
+                                    <div id="ctl00_corpox">
+	
+                                            
+    <div style="width: 810px; height: 570px; text-align: center; margin-top: 10px; background-color: #FFFFFF">
+        <table>
+            <tr>
+                <td style="padding-top: 40px;">
+                    <img id="ctl00_CPC_Image3" src="imagens/master/LogoPCIVIL.gif" style="border-width:0px;" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="font-size: xx-large; color: #FF0000; font-family: Arial;">
+                       
+                    </div>
+                    <br />
+                    <div style="font-size: xx-large; color: #000000; font-family: Arial;">
+                        DEAM - Jacarepaguá
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+                                        
+</div>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+            <div id="foot">
+                <input name="t2" value="POLÍCIA CIVIL DO ESTADO DO RIO DE JANEIRO - TODOS OS DIREITOS RESERVADOS"
+                    readonly="readonly" style="border-style: none; color: #ffffff; font-size: 11px;
+                    text-align: left; font-family: Arial, Helvetica, sans-serif; background-color: #4a74b0;
+                    height: 20px;" maxlength="50" size="80" /><br />
+                
+            </div>
+            <!--Fecha FOOTER-->
+        </center>
+        
+        <div id="ctl00_PRGatualiza" style="display:none;">
+	
+                <div id="DivAguarde2">
+                    <img src="Imagens/login/aguarde100-118.gif" style="margin-top: 20%; margin-left: 0%;"
+                        alt="Aguarde" />
+                </div>
+            
+</div>
+        
+
+<script type="text/javascript">
+//<![CDATA[
+(function() {var fn = function() {$get("ctl00_ScriptManager1_HiddenField").value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();Sys.Application.add_init(function() {
+    $create(Sys.UI._UpdateProgress, {"associatedUpdatePanelId":"ctl00_corpox","displayAfter":100,"dynamicLayout":true}, null, null, $get("ctl00_PRGatualiza"));
+});
+//]]>
+</script>
+</form>
+    </div>
+</body>
+</html>

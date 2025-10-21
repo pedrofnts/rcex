@@ -1,0 +1,197 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	TELA DE AUTENTICAÇÃO
+</title><link rel="stylesheet" type="text/css" href="css/estilologin.css" />
+
+    <script src="Js/jquery-1.4.1-vsdoc.js" type="text/javascript"></script>
+
+    <link rel="shortcut icon" href="Imagens/master/favicon.ico" />
+
+    <script language="javascript" type="text/javascript">
+        function senha(e) {
+            var valoranterior = document.getElementById('senha').value
+            document.getElementById('senha').value = valoranterior + e;
+        }
+
+        function limpar() {
+            document.getElementById('senha').value = "";
+        }
+        function exibepopup() {
+            document.getElementById('DivPopup').style.display = 'block';
+
+        }
+        function exibepopup2() {
+            document.getElementById('DivPopup2').style.display = 'block';
+
+        }
+        function none() {
+        }
+
+        function pageLoad() {
+           
+            if ($('#chkcpf:checked').length > 0) {
+                $("#txtusuario").mask("999.999.999-99");
+
+            } else {
+                $("#txtusuario").unmask();
+            }
+            $("#txtusuario").focus();
+        }
+        $(document).ready(
+
+ function() {
+     if ($('#chkcpf:checked').length > 0) {
+         $("#txtusuario").mask("999.999.999-99");
+
+     } else {
+         $("#txtusuario").unmask();
+     }
+     $("#txtusuario").focus();
+     $('#chkcpf').click(
+
+  function() {
+      if ($('#chkcpf:checked').length > 0) {
+          $("#txtusuario").mask("999.999.999-99");
+
+      } else {
+          $("#txtusuario").unmask();
+      }
+      $("#txtusuario").focus();
+  });
+
+ });
+      
+    </script>
+
+</head>
+<body>
+    <form name="form1" method="post" action="./p_login.aspx" id="form1">
+<div>
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNDcyMzk3NjAwD2QWAgIDD2QWIAIBDw8WAh4EVGV4dAU3VmVyc8OjbyAzLjUxLjAuMjIwMzUgLSBDb21waWxhZG8gZW0gMjcvMDgvMjAyNSAxNzoyODo1OGRkAgUPFgIeCGRpc2FibGVkZGQCCQ8WBB4FdGl0bGUFBTEgLSA4Hglpbm5lcmh0bWwFBTEgLSA4ZAIKDxYEHwIFBTIgLSAzHwMFBTIgLSAzZAILDxYEHwIFBTYgLSA3HwMFBTYgLSA3ZAIMDxYEHwIFBTAgLSA0HwMFBTAgLSA0ZAINDxYEHwIFBTUgLSA5HwMFBTUgLSA5ZAIODxYEHwIFCUcgLSBQIC0gWB8DBQlHIC0gUCAtIFhkAhAPFgQfAgUJQyAtIEwgLSBXHwMFCUMgLSBMIC0gV2QCEQ8WBB8CBQlJIC0gSiAtIFofAwUJSSAtIEogLSBaZAITDxYEHwIFCUggLSBNIC0gVh8DBQlIIC0gTSAtIFZkAhQPFgQfAgUJRCAtIE4gLSBTHwMFCUQgLSBOIC0gU2QCFg8WBB8CBQlBIC0gSyAtIE8fAwUJQSAtIEsgLSBPZAIXDxYEHwIFCVEgLSBSIC0gVB8DBQlRIC0gUiAtIFRkAhkPFgQfAgUJQiAtIEUgLSBVHwMFCUIgLSBFIC0gVWQCGg8WBB8CBQVGIC0gWR8DBQVGIC0gWWQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFBmNoa2NwZq1C9PPlc+dHzShVHzBQK2p92x2t2TwMtSDE35K7wIpW" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=gJVAH5R8maGnnZYu-RQttzlt2jjnBz8ABJMrGEZ-cEix_SGaO1XkKIdBjFqcWllIqVWY5cBynSZTKw4Jgy779a4LIVKFc1Gmw-ytfXoFs001&amp;t=638562453717896622" type="text/javascript"></script>
+
+
+<script src="/WebResource.axd?d=vRZS1CL6woY3E80xRaFRbGnWdBoMLxhy19ftz6RE7rEVzjEs9W7eW2YFIuWSlXy4lVGQFa3vrENIALslowKGo4FFCgFb3nbdNB04nz2OQnc1&amp;t=638562453717896622" type="text/javascript"></script>
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="277A3C26" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAm6M1XnbNnLjP8wZDaehnboy96dWkumrXzDckADywQ75M8FfsggvXmkl4i8TrzRopysc9/KcEnkoa1BuFZ5cZmCJFmQiodz3fCMh6foZUr985Euscsqj3IZXKvmSebQmd1rEygNlYwE5hXcjieAPAEM0247Fubexr0JmmWuNi7K7V1b1iVY+KU+uXTKAyA6kHq6QKVIxmYBNaaqxIGpv0ihdIBGnSqWRHFlp1qpsauhIA==" />
+</div>
+    <div id="corpo">
+        <div id="head">
+            <a href="#" id="logo">
+                <img src="imagens/login/logo.png" alt="Portal da Polícia Civil do Estado do Rio de Janeiro" /></a>
+            <span id="versao">
+                <span id="LBLversao">Versão 3.51.0.22035 - Compilado em 27/08/2025 17:28:58</span></span>
+            <h1>
+               RAS - WEB</h1>
+            <h2>
+                TELA DE AUTENTICAÇÃO</h2>
+        </div>
+        <div id="content">
+            <div id="login">
+                <input name="txtusuario" type="text" id="txtusuario" class="textbox_login" />
+                <input name="chkcpf" type="checkbox" id="chkcpf" class="chkcpf_login" />
+                <input name="senha" type="password" id="senha" class="textbox_login" readonly="readonly" />
+                <div id="teclas">
+                    <a href="javascript:senha('1')" id="tecla_number_01" class="tecla_number" title="1 - 8">1 - 8</a><a href="javascript:senha('2')" id="tecla_number_02" class="tecla_number" title="2 - 3">2 - 3</a><a href="javascript:senha('3')" id="tecla_number_03" class="tecla_number" title="6 - 7">6 - 7</a><a href="javascript:senha('4')" id="tecla_number_04" class="tecla_number" title="0 - 4">0 - 4</a><a href="javascript:senha('5')" id="tecla_number_05" class="tecla_number" title="5 - 9">5 - 9</a><a href="javascript:senha('6')" id="tecla_01" class="tecla" title="G - P - X">G - P - X</a>
+                    <a href="javascript:senha('7')" id="tecla_02" class="tecla" title="C - L - W">C - L - W</a><a href="javascript:senha('8')" id="tecla_03" class="tecla" title="I - J - Z">I - J - Z</a>
+                    <a href="javascript:senha('9')" id="tecla_04" class="tecla" title="H - M - V">H - M - V</a><a href="javascript:senha('a')" id="tecla_05" class="tecla" title="D - N - S">D - N - S</a>
+                    <a href="javascript:senha('b')" id="tecla_06" class="tecla" title="A - K - O">A - K - O</a><a href="javascript:senha('c')" id="tecla_07" class="tecla" title="Q - R - T">Q - R - T</a>
+                    <a href="javascript:senha('d')" id="tecla_08" class="tecla" title="B - E - U">B - E - U</a><a href="javascript:senha('e')" id="tecla_09" class="tecla" title="F - Y">F - Y</a>
+                </div>
+                
+                <a onclick="document.getElementById(&#39;DivAguarde&#39;).style.display=&#39;block&#39;;" id="entrar" class="command" href="javascript:__doPostBack(&#39;entrar&#39;,&#39;&#39;)">ENTRAR</a>
+                <a href="javascript:limpar()" id="limpar" class="command">LIMPAR</a>
+            </div>
+            <span id="lblusopk" style="display:none;">-1</span>
+                            <input type="hidden" name="usopk" id="usopk" value="-1" />
+        </div>
+        <div id="foot">
+            POLÍCIA CIVIL DO ESTADO DO RIO DE JANEIRO - TODOS OS DIREITOS RESERVADOS
+        </div>
+        <div id="Lotacoes">
+            <center>
+                <div id="DivPopup2">
+                    <div id="Cabecalho2">
+                        <a id="CabecaTxt2"></a><a href="#" id="Fechar2" onclick="document.getElementById(&#39;Lotacoes&#39;).style.display=&#39;none&#39;;"></a>
+                    </div>
+                    <br />
+                    <select size="14" name="LBO_lotacao" id="LBO_lotacao" class="select" style="width:470px;">
+
+</select>
+                    <br />
+                    <br />
+                    <a onclick="document.getElementById(&#39;DivAguarde&#39;).style.display=&#39;block&#39;;" id="Entrar_lotacao" class="Entrar_lotacao" href="javascript:__doPostBack(&#39;Entrar_lotacao&#39;,&#39;&#39;)">ENTRAR</a>
+                </div>
+
+            </center>
+        </div>
+    </div>
+    <div id="FundoPop2" onclick="document.getElementById(&#39;FundoPop2&#39;).style.display=&#39;none&#39;;">
+            <center>
+                <div id="DivPopup3">
+                    <div id="Cabecalho3">
+                        <a id="CabecaTxt3"></a>
+                        <a href="#" id="A2" onclick="document.getElementById(&#39;FundoPop2&#39;).style.display=&#39;none&#39;;"></a>
+                    </div>
+                    <span id="TextoPop2"></span>
+                    <br />
+                    <div style="width:300px;margin-left:100px;">
+                         <a onclick="document.getElementById(&#39;FundoPop2&#39;).style.display=&#39;none&#39;;" id="entrar2" class="Entrar_lotacao" href="javascript:__doPostBack(&#39;entrar2&#39;,&#39;&#39;)" style="float: left;">Sim</a>
+                        <a onclick="document.getElementById(&#39;FundoPop2&#39;).style.display=&#39;none&#39;;" id="Voltar" class="Entrar_lotacao" href="javascript:__doPostBack(&#39;Voltar&#39;,&#39;&#39;)">Não</a>
+                      
+                    </div>
+                </div>
+            </center>
+        </div>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+WebForm_AutoFocus('txtusuario');//]]>
+</script>
+</form>
+    <div id="FundoPop" onclick="document.getElementById(&#39;FundoPop&#39;).style.display=&#39;none&#39;;">
+        <center>
+            <div id="DivPopup">
+                <div id="Cabecalho">
+                    <a id="CabecaTxt"></a><a href="#" id="Fechar" onclick="document.getElementById(&#39;FundoPop&#39;).style.display=&#39;none&#39;;"></a>
+                </div>
+                <span id="TextoPop"></span>
+                <br />
+            </div>
+        </center>
+    </div>
+    <div id="DivAguarde">
+        <center>
+            <a id="IMGAguarde"></a>
+        </center>
+    </div>
+</body>
+</html>

@@ -1,0 +1,407 @@
+1|#||4|28258|updatePanel|ctl00_CPC_Upddistribuivbdps|
+                <div id="ctl00_CPC_dps_div_principal" class="divPrincipal">
+    
+    <div id="ctl00_CPC_dps_pnl_reservar_vagas" disabled="disabled" style="border: 1px solid #000;
+        top: 4px; left: 2px; height: 80px; width: 408px; position: absolute;">
+	
+        
+        <span id="ctl00_CPC_dps_lbl_mes_de_referencia" title="Período onde poderá ser feita a reserva de vagas." style="top: 20px;
+            left: 40px; position: absolute; color: #000;">Mês de referência:</span>
+        <input name="ctl00$CPC$dps$txt_mes_de_referencia" type="text" value="Novembro/2025" readonly="readonly" disabled="disabled" id="ctl00_CPC_dps_txt_mes_de_referencia" style="width:100px;top: 35px; left: 40px;
+            position: absolute;" />
+        
+        <span id="ctl00_CPC_dps_Label3" style="top: 20px; left: 190px;
+            position: absolute; color: #000;">Tipo serviço:</span>
+        <select name="ctl00$CPC$dps$drpTipoPerfil" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$CPC$dps$drpTipoPerfil\&#39;,\&#39;\&#39;)&#39;, 0)" disabled="disabled" id="ctl00_CPC_dps_drpTipoPerfil" style="top: 35px; left: 190px;
+            position: absolute; width: 180px;">
+		<option selected="selected" value="3">F&#233;rias</option>
+
+	</select>
+    
+</div>
+    
+    <div id="ctl00_CPC_dps_pnlHoras" disabled="disabled" style="border: 1px solid #000; top: 4px;
+        left: 415px; height: 80px; width: 408px; position: absolute;">
+	
+        <span id="ctl00_CPC_dps_lbl_reservar_vagas" style="background-color:White;font-weight:bold;top: -6px;
+            left: 4px; position: absolute; z-index: 10000; padding-left: 5px; padding-right: 5px;
+            color: #000;">Horas</span>
+        
+        <span id="ctl00_CPC_dps_lbl_hora_mes" style="top: 20px; left: 70px;
+            position: absolute; color: #000;">Total:</span>
+        <input name="ctl00$CPC$dps$txt_hora_mes" type="text" value="120" readonly="readonly" disabled="disabled" id="ctl00_CPC_dps_txt_hora_mes" tabindex="5" onkeydown="return false;" style="top: 35px;
+            left: 70px; position: absolute; width: 54px;" />
+        
+        <span id="ctl00_CPC_dps_lbl_horas_util_mes" style="top: 20px;
+            left: 120px; position: absolute; color: #000; width: 150px;">Utilizada:</span>
+        <input name="ctl00$CPC$dps$txt_horas_util_mes" type="text" value="36" readonly="readonly" disabled="disabled" id="ctl00_CPC_dps_txt_horas_util_mes" tabindex="20" onkeydown="return false;" style="top: 35px;
+            left: 170px; position: absolute; width: 54px;" />
+        
+        <span id="ctl00_CPC_dps_lbl_vagas_disp" style="top: 20px;
+            left: 243px; position: absolute; color: #000; width: 115px;">Disponível:</span>
+        <input name="ctl00$CPC$dps$txt_vagas_disp" type="text" value="84" readonly="readonly" disabled="disabled" id="ctl00_CPC_dps_txt_vagas_disp" tabindex="35" onkeydown="return false;" style="top: 35px;
+            left: 270px; position: absolute; width: 54px;" />
+    
+</div>
+    
+    <div style="left: 2px; top: 92px; border: none; position: absolute; width: 408px;
+        height: 480px; background-color: #DAE9E9; border: 1px solid #000;">
+        <img src="../imagens/calendario-blur.png" style="position: absolute; left: 4px; top: 88px;
+            width: 400px; height: 382px;" alt="Carregando Vagas" />
+        
+    </div>
+    <div id="ctl00_CPC_dps_pnl_selecione_delegacia" disabled="disabled" onkeypress="javascript:return WebForm_FireDefaultButton(event, &#39;ctl00_CPC_dps_btnFiltrar&#39;)" style="border: none; top: 85px; left: 8px; height: 60px; width: 400px; position: absolute;">
+	
+        <span id="ctl00_CPC_dps_lbl_nome" style="font-weight:bold;top: 18px; left: 5px; position: absolute; color: #000;">Órgãos com vagas disponíveis:</span>
+        <select name="ctl00$CPC$dps$drp_selecione_delegacia" disabled="disabled" id="ctl00_CPC_dps_drp_selecione_delegacia" tabindex="50" style="top: 34px; left: 5px;
+            position: absolute; width: 285px;">
+		<option selected="selected" value="0">Todos os &#243;rg&#227;os</option>
+		<option value="532">ARQUIVO GERAL</option>
+		<option value="770">ASCOM</option>
+		<option value="156">CFAE</option>
+		<option value="558">CGPOL</option>
+		<option value="422">DAIRJ</option>
+		<option value="243">DAS</option>
+		<option value="143">DC - POLINTER/RJ</option>
+		<option value="583">DCAV</option>
+		<option value="146">DDEF-Delegacia de Defrauda&#231;&#245;es</option>
+		<option value="942">DDPA-Del Descoberta Paradeiros</option>
+		<option value="158">DDSD</option>
+		<option value="649">DEAC - CAPITAL</option>
+		<option value="544">DEAC - 010a. (ESPECIALIZADAS)</option>
+		<option value="563">DEAC - 011a. (NOVA IGUA&#199;U)</option>
+		<option value="565">DEAC - 013a. (D CAXIAS)</option>
+		<option value="567">DEAC - 015a. (NITER&#211;I)</option>
+		<option value="568">DEAC - 016a. (S&#195;O GON&#199;ALO)</option>
+		<option value="943">DEAM - ANGRA DOS REIS</option>
+		<option value="461">DEAM - Belford Roxo</option>
+		<option value="934">DEAM - CABO FRIO</option>
+		<option value="940">DEAM - CAMPOS GOYTACAZES</option>
+		<option value="163">DEAM - Centro</option>
+		<option value="165">DEAM - Duque de Caxias</option>
+		<option value="164">DEAM - Jacarepagu&#225;</option>
+		<option value="166">DEAM - Niter&#243;i</option>
+		<option value="851">DEAM - NOVA FRIBURGO</option>
+		<option value="168">DEAM - Nova Iguacu</option>
+		<option value="321">DEAM - Oeste</option>
+		<option value="167">DEAM - S&#227;o Gon&#231;alo</option>
+		<option value="675">DEAM - S&#227;o Jo&#227;o de Meriti</option>
+		<option value="523">DEAM - Volta Redonda</option>
+		<option value="554">DEAPTI</option>
+		<option value="147">DEAT</option>
+		<option value="151">DECON</option>
+		<option value="985">DECRADI</option>
+		<option value="152">DELFAZ</option>
+		<option value="960">DESARME</option>
+		<option value="671">DGAF</option>
+		<option value="786">DGAF - ST</option>
+		<option value="939">DGCOR - DCC-LD</option>
+		<option value="992">DGCOR - DCOC-LD</option>
+		<option value="993">DGCOR - GRA (GABINETE RECUPERA&#199;&#195;O ATIVOS)</option>
+		<option value="702">DGCOR - LAB-LD</option>
+		<option value="986">DGCOR-LD</option>
+		<option value="958">DGHPP</option>
+		<option value="645">DGPB</option>
+		<option value="621">DGPC</option>
+		<option value="937">DGPDEAC</option>
+		<option value="650">DGPE</option>
+		<option value="653">DGPI</option>
+		<option value="589">DGPTC</option>
+		<option value="545">DH - BF</option>
+		<option value="586">DH - NSG</option>
+		<option value="867">DPA - 003a.</option>
+		<option value="767">DPA - 004a.</option>
+		<option value="768">DPA - 005a.</option>
+		<option value="868">DPA - 006a.</option>
+		<option value="769">DPA - 007a.</option>
+		<option value="402">DPCA</option>
+		<option value="155">DPCA - Niter&#243;i</option>
+		<option value="526">DPMA</option>
+		<option value="524">DRACO</option>
+		<option value="533">DRCI</option>
+		<option value="560">DRCPIM</option>
+		<option value="159">DRE - DELEGACIA DE REPRESS&#195;O A ENTORPECENTES</option>
+		<option value="161">DRF</option>
+		<option value="148">DRFA</option>
+		<option value="552">DRFC</option>
+		<option value="530">ICCE - SEDE</option>
+		<option value="529">IML - Afr&#226;nio Peixoto</option>
+		<option value="619">PRPTC - CAMPO GRANDE</option>
+		<option value="725">PRPTC - DUQUE DE CAXIAS</option>
+		<option value="609">PRPTC - ITAPERUNA</option>
+		<option value="615">PRPTC - MACA&#201;</option>
+		<option value="773">PRPTC - PETR&#211;POLIS</option>
+		<option value="585">PRPTC - S&#195;O GON&#199;ALO</option>
+		<option value="601">PRPTC - TERESOPOLIS</option>
+		<option value="21">001a.Delegacia de Pol&#237;cia</option>
+		<option value="22">004a.Delegacia de Pol&#237;cia</option>
+		<option value="1">005a.Delegacia de Pol&#237;cia</option>
+		<option value="23">006a.Delegacia de Pol&#237;cia</option>
+		<option value="24">007a.Delegacia de Pol&#237;cia</option>
+		<option value="25">009a.Delegacia de Pol&#237;cia</option>
+		<option value="26">010a.Delegacia de Pol&#237;cia</option>
+		<option value="935">011a.Delegacia de Pol&#237;cia</option>
+		<option value="27">012a.Delegacia de Pol&#237;cia</option>
+		<option value="28">013a.Delegacia de Pol&#237;cia</option>
+		<option value="29">014a.Delegacia de Pol&#237;cia</option>
+		<option value="30">015a.Delegacia de Pol&#237;cia</option>
+		<option value="31">016a.Delegacia de Pol&#237;cia</option>
+		<option value="32">017a.Delegacia de Pol&#237;cia</option>
+		<option value="33">018a.Delegacia de Pol&#237;cia</option>
+		<option value="34">019a.Delegacia de Pol&#237;cia</option>
+		<option value="35">020a.Delegacia de Pol&#237;cia</option>
+		<option value="36">021a.Delegacia de Pol&#237;cia</option>
+		<option value="39">024a.Delegacia de Pol&#237;cia</option>
+		<option value="40">025a.Delegacia de Pol&#237;cia</option>
+		<option value="41">026a.Delegacia de Pol&#237;cia</option>
+		<option value="42">027a.Delegacia de Pol&#237;cia</option>
+		<option value="43">028a.Delegacia de Pol&#237;cia</option>
+		<option value="44">029a.Delegacia de Pol&#237;cia</option>
+		<option value="45">030a.Delegacia de Pol&#237;cia</option>
+		<option value="47">032a.Delegacia de Pol&#237;cia</option>
+		<option value="48">033a.Delegacia de Pol&#237;cia</option>
+		<option value="49">034a.Delegacia de Pol&#237;cia</option>
+		<option value="50">035a.Delegacia de Pol&#237;cia</option>
+		<option value="51">036a.Delegacia de Pol&#237;cia</option>
+		<option value="52">037a.Delegacia de Pol&#237;cia</option>
+		<option value="53">038a.Delegacia de Pol&#237;cia</option>
+		<option value="54">039a.Delegacia de Pol&#237;cia</option>
+		<option value="123">041a.Delegacia de Pol&#237;cia</option>
+		<option value="714">042a.Delegacia de Pol&#237;cia</option>
+		<option value="556">043a.Delegacia de Pol&#237;cia</option>
+		<option value="525">044a.Delegacia de Pol&#237;cia</option>
+		<option value="56">048a.Delegacia de Pol&#237;cia</option>
+		<option value="57">050a.Delegacia de Pol&#237;cia</option>
+		<option value="58">051a.Delegacia de Pol&#237;cia</option>
+		<option value="59">052a.Delegacia de Pol&#237;cia</option>
+		<option value="60">053a.Delegacia de Pol&#237;cia</option>
+		<option value="61">054a.Delegacia de Pol&#237;cia</option>
+		<option value="62">055a.Delegacia de Pol&#237;cia</option>
+		<option value="63">056a.Delegacia de Pol&#237;cia</option>
+		<option value="64">057a.Delegacia de Pol&#237;cia</option>
+		<option value="65">058a.Delegacia de Pol&#237;cia</option>
+		<option value="66">059a.Delegacia de Pol&#237;cia</option>
+		<option value="67">060a.Delegacia de Pol&#237;cia</option>
+		<option value="68">061a.Delegacia de Pol&#237;cia</option>
+		<option value="69">062a.Delegacia de Pol&#237;cia</option>
+		<option value="557">063a.Delegacia de Pol&#237;cia</option>
+		<option value="70">064a.Delegacia de Pol&#237;cia</option>
+		<option value="71">065a.Delegacia de Pol&#237;cia</option>
+		<option value="72">066a.Delegacia de Pol&#237;cia</option>
+		<option value="736">067a.Delegacia de Pol&#237;cia</option>
+		<option value="737">070a.Delegacia de Pol&#237;cia</option>
+		<option value="73">071a.Delegacia de Pol&#237;cia</option>
+		<option value="74">072a.Delegacia de Pol&#237;cia</option>
+		<option value="76">074a.Delegacia de Pol&#237;cia</option>
+		<option value="77">075a.Delegacia de Pol&#237;cia</option>
+		<option value="78">076a.Delegacia de Pol&#237;cia</option>
+		<option value="79">077a.Delegacia de Pol&#237;cia</option>
+		<option value="80">078a.Delegacia de Pol&#237;cia</option>
+		<option value="81">079a.Delegacia de Pol&#237;cia</option>
+		<option value="82">081a.Delegacia de Pol&#237;cia</option>
+		<option value="83">082a.Delegacia de Pol&#237;cia</option>
+		<option value="84">088a.Delegacia de Pol&#237;cia</option>
+		<option value="85">089a.Delegacia de Pol&#237;cia</option>
+		<option value="86">090a.Delegacia de Pol&#237;cia</option>
+		<option value="87">091a.Delegacia de Pol&#237;cia</option>
+		<option value="90">094a.Delegacia de Pol&#237;cia</option>
+		<option value="91">095a.Delegacia de Pol&#237;cia</option>
+		<option value="93">097a.Delegacia de Pol&#237;cia</option>
+		<option value="94">098a.Delegacia de Pol&#237;cia</option>
+		<option value="95">099a.Delegacia de Pol&#237;cia</option>
+		<option value="501">100a.Delegacia de Pol&#237;cia</option>
+		<option value="546">101a.Delegacia de Pol&#237;cia</option>
+		<option value="96">104a.Delegacia de Pol&#237;cia</option>
+		<option value="97">105a.Delegacia de Pol&#237;cia</option>
+		<option value="98">106a.Delegacia de Pol&#237;cia</option>
+		<option value="99">107a.Delegacia de Pol&#237;cia</option>
+		<option value="100">108a.Delegacia de Pol&#237;cia</option>
+		<option value="102">110a.Delegacia de Pol&#237;cia</option>
+		<option value="104">112a.Delegacia de Pol&#237;cia</option>
+		<option value="106">119a.Delegacia de Pol&#237;cia</option>
+		<option value="107">120a.Delegacia de Pol&#237;cia</option>
+		<option value="108">121a.Delegacia de Pol&#237;cia</option>
+		<option value="109">122a.Delegacia de Pol&#237;cia</option>
+		<option value="112">125a.Delegacia de Pol&#237;cia</option>
+		<option value="113">126a.Delegacia de Pol&#237;cia</option>
+		<option value="115">128a.Delegacia de Pol&#237;cia</option>
+		<option value="657">130a.Delegacia de Pol&#237;cia</option>
+		<option value="738">132a.Delegacia de Pol&#237;cia</option>
+		<option value="116">134a.Delegacia de Pol&#237;cia</option>
+		<option value="118">136a.Delegacia de Pol&#237;cia</option>
+		<option value="121">139a.Delegacia de Pol&#237;cia</option>
+		<option value="122">140a.Delegacia de Pol&#237;cia</option>
+		<option value="527">141a.Delegacia de Pol&#237;cia</option>
+		<option value="124">142a.Delegacia de Pol&#237;cia</option>
+		<option value="125">143a.Delegacia de Pol&#237;cia</option>
+		<option value="126">144a.Delegacia de Pol&#237;cia</option>
+		<option value="127">145a.Delegacia de Pol&#237;cia</option>
+		<option value="128">146a.Delegacia de Pol&#237;cia</option>
+		<option value="559">147a.Delegacia de Pol&#237;cia</option>
+		<option value="722">148a.Delegacia de Pol&#237;cia</option>
+		<option value="129">151a.Delegacia de Pol&#237;cia</option>
+		<option value="130">152a.Delegacia de Pol&#237;cia</option>
+		<option value="131">153a.Delegacia de Pol&#237;cia</option>
+		<option value="134">156a.Delegacia de Pol&#237;cia</option>
+		<option value="135">157a.Delegacia de Pol&#237;cia</option>
+		<option value="136">158a.Delegacia de Pol&#237;cia</option>
+		<option value="137">159a.Delegacia de Pol&#237;cia</option>
+		<option value="138">165a.Delegacia de Pol&#237;cia</option>
+		<option value="139">166a.Delegacia de Pol&#237;cia</option>
+		<option value="141">168a.Delegacia de Pol&#237;cia</option>
+
+	</select>
+        <input type="submit" name="ctl00$CPC$dps$btnFiltrar" value="Filtrar" disabled="disabled" id="ctl00_CPC_dps_btnFiltrar" tabindex="51" style="color:Black;width: 94px; position: absolute;
+            left: 299px; top: 33px; cursor: pointer;" />
+    
+</div>
+    
+    
+    <div id="ctl00_CPC_dps_Panel1" style="top: 0px; left: 415px; height: 395px;
+        width: 400px; position: absolute;">
+	
+        <div style="left: 0px; top: 92px; border: none; position: absolute; width: 408px;
+            height: 480px; border: 1px solid #000;">
+            <span id="ctl00_CPC_dps_Label1" style="background-color:White;font-weight:bold;top: -6px;
+                left: 4px; position: absolute; z-index: 10000; padding-left: 5px; padding-right: 5px;
+                color: #000;">Vagas reservadas</span>
+            
+            <input type="submit" name="ctl00$CPC$dps$btnRelatorioVagaReservada" value="Vagas reservadas" id="ctl00_CPC_dps_btnRelatorioVagaReservada" tabindex="51" title="Clique para imprimir as vagas reservadas por você" style="color:Black;position: absolute;
+                width: 110px; left: 290px; top: 10px; cursor: pointer;" />
+            <div id="ctl00_CPC_dps_uppgriddias">
+		
+                    <div style="position: absolute; width: 397px; height: 420px; top: 44px; left: 5px;
+                        overflow-y: scroll; background: #FFFFCC; border: 1px solid #000;">
+                        <div>
+			<table cellspacing="0" align="Center" rules="all" border="1" id="ctl00_CPC_dps_grd_dia" style="color:#333333;border-color:#000CCC;font-family:Arial;border-collapse:collapse;position: relative; text-align: left; width: 380px; border: 1px solid #cccccc;">
+				<tr class="grd_dia_head" align="center" style="color:White;background-color:#5D7B9D;font-weight:bold;height:30px;">
+					<th scope="col">Data</th><th scope="col">Per&#237;odo</th><th scope="col">Org&#227;o</th><th scope="col">Tipo RAS</th><th scope="col">&nbsp;</th>
+				</tr><tr style="color:#333333;background-color:#DAE9E9;height:26px;white-space:nowrap;">
+					<td align="center" style="font-size:10px;width:70px;white-space:nowrap;">02/11/2025</td><td align="center" style="font-size:10px;width:80px;white-space:nowrap;">08:00 - 19:59</td><td align="center" style="font-size:8px;width:162px;white-space:nowrap;">052a.Delegacia de Pol&#237;cia</td><td align="center" style="font-size:10px;width:80px;white-space:nowrap;">Oper. Pres.</td><td align="center">
+                                        <itemstyle width="85px" wrap="true" horizontalalign="center" />
+                                        
+                                        <span id="ctl00_CPC_dps_grd_dia_ctl02_lblAtribuida" style="font-weight:bold;color:#b47b31;">RAS Presente</span>
+                                    </td>
+				</tr><tr style="color:#333333;background-color:White;height:26px;white-space:nowrap;">
+					<td align="center" style="font-size:10px;width:70px;white-space:nowrap;">18/11/2025</td><td align="center" style="font-size:10px;width:80px;white-space:nowrap;">08:00 - 19:59</td><td align="center" style="font-size:8px;width:162px;white-space:nowrap;">032a.Delegacia de Pol&#237;cia</td><td align="center" style="font-size:10px;width:80px;white-space:nowrap;">Extens&#227;o</td><td align="center">
+                                        <itemstyle width="85px" wrap="true" horizontalalign="center" />
+                                        <input type="submit" name="ctl00$CPC$dps$grd_dia$ctl03$btnRemover" value="Cancelar" onclick="return confirm(&#39;Você tem certeza que deseja excluir esta reserva?&#39;);" id="ctl00_CPC_dps_grd_dia_ctl03_btnRemover" tabindex="1" title="Cancelar reserva" style="height:22px;width:75px;cursor: pointer;" />
+                                        
+                                    </td>
+				</tr><tr style="color:#333333;background-color:#DAE9E9;height:26px;white-space:nowrap;">
+					<td align="center" style="font-size:10px;width:70px;white-space:nowrap;">30/11/2025</td><td align="center" style="font-size:10px;width:80px;white-space:nowrap;">08:00 - 19:59</td><td align="center" style="font-size:8px;width:162px;white-space:nowrap;">032a.Delegacia de Pol&#237;cia</td><td align="center" style="font-size:10px;width:80px;white-space:nowrap;">Extens&#227;o</td><td align="center">
+                                        <itemstyle width="85px" wrap="true" horizontalalign="center" />
+                                        <input type="submit" name="ctl00$CPC$dps$grd_dia$ctl04$btnRemover" value="Cancelar" onclick="return confirm(&#39;Você tem certeza que deseja excluir esta reserva?&#39;);" id="ctl00_CPC_dps_grd_dia_ctl04_btnRemover" tabindex="1" title="Cancelar reserva" style="height:22px;width:75px;cursor: pointer;" />
+                                        
+                                    </td>
+				</tr>
+			</table>
+		</div>
+                    </div>
+                
+	</div>
+        </div>
+    
+</div>
+    <input type="hidden" name="ctl00$CPC$dps$hdanomesref" id="ctl00_CPC_dps_hdanomesref" value="202511" />
+    <input type="hidden" name="ctl00$CPC$dps$hdtipoperfilvaga" id="ctl00_CPC_dps_hdtipoperfilvaga" value="3" />
+    <input type="hidden" name="ctl00$CPC$dps$hddepoid" id="ctl00_CPC_dps_hddepoid" value="0" />
+    <input type="hidden" name="ctl00$CPC$dps$hdusuaid" id="ctl00_CPC_dps_hdusuaid" value="27507" />
+    <input type="hidden" name="ctl00$CPC$dps$hddias" id="ctl00_CPC_dps_hddias" />
+    <input type="hidden" name="ctl00$CPC$dps$hddiaselecionado" id="ctl00_CPC_dps_hddiaselecionado" value="2025-11-30" />
+    <input type="hidden" name="ctl00$CPC$dps$hdnPostControl" id="ctl00_CPC_dps_hdnPostControl" value="0" />
+    
+    <input type="submit" name="ctl00$CPC$dps$btn_teste" value="teste" id="ctl00_CPC_dps_btn_teste" tabindex="55" class="botao" style="color:Black;width: 100px;
+        display: none; position: absolute; left: 685px; top: 205px; cursor: pointer;" />
+    <input type="submit" name="ctl00$CPC$dps$btninvocadetalhe" value="teste" id="ctl00_CPC_dps_btninvocadetalhe" tabindex="55" style="color:Black;width: 100px;
+        display: none; position: absolute; left: 585px; top: 205px; cursor: pointer;" />
+    <script type="text/javascript">
+        var psdti = ''
+    </script>
+    
+    <script type="text/javascript" language="JavaScript" src="../usercontrol/ReservarVagaServidor.ascx.js"
+        charset="utf-8"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/mode-cfb-min.js"></script>
+</div>
+
+<div id="ctl00_CPC_dps_div_tela_resultado" style="display: none; z-index: 10050;
+    position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background: url(../imagens/login/bg-popup.png);">
+    <div id="ctl00_CPC_dps_upd_tela_resultado">
+	
+            <div id="ctl00_CPC_dps_Div13" style="margin-left: -390px; margin-top: -270px; top: 50%;
+                left: 50%; width: 905px; height: 540px; color: #000000; background: #FFFFFF;
+                position: absolute; border: 1px solid #d0d0d0;">
+                <div id="ctl00_CPC_dps_Div15" style="background-color: #1A2B61; width: 100%; height: 20px;
+                    padding-top: 3px; padding-left: 0px; margin-bottom: 10px; text-align: left;">
+                    <a id="ctl00_CPC_dps_A3" style="text-decoration: none; font-weight: bold; font: normal 14px arial;
+                        color: #FFFFFF; margin-left: 5px;">Reservar Vagas</a>
+                </div>
+                <div id="ctl00_CPC_dps_Div16">
+                    <div id="ctl00_CPC_dps_data_reserva_div_principal" style="top: 2px; left: 0px; height: 535px; width: 900px; position: relative;">
+    <div id="ctl00_CPC_dps_data_reserva_pnl_dias" style="background-color:#FFFFCC;left: 5px; height: auto; width: 820px; position: absolute;">
+		
+        
+        <div style="border-style: solid; border-width: 1px; overflow: auto; position: absolute; left: 5px; top: 5px; width: 880px; height: 460px;">
+            <div>
+			<table cellspacing="0" align="Center" rules="all" border="1" id="ctl00_CPC_dps_data_reserva_grd_dia" style="color:#333333;font-family:Arial;border-collapse:collapse;position: relative; text-align:left; width: 880px;">
+				<tr align="left" style="color:White;background-color:#5D7B9D;font-weight:bold;">
+					<td style="width:90px;white-space:nowrap;">Data</td><td style="width:100px;white-space:nowrap;">Per&#237;odo</td><td style="width:307px;white-space:nowrap;">Org&#227;o</td><td style="width:257px;white-space:nowrap;">Perfil</td><td>&nbsp;</td>
+				</tr><tr style="color:#333333;background-color:#DAE9E9;white-space:nowrap;">
+					<td style="width:90px;white-space:nowrap;">30/11/2025</td><td style="font-size:11px;width:100px;white-space:nowrap;">08:00 - 19:59</td><td style="font-size:11px;width:307px;white-space:nowrap;">032a.Delegacia de Pol&#237;cia</td><td style="font-size:11px;width:257px;white-space:nowrap;">GIP DLEGAL 1</td><td align="center">
+                            <itemstyle width="125px" wrap="False" />
+                            <headerstyle width="125px" wrap="False" />
+                            <input type="submit" name="ctl00$CPC$dps$data_reserva$grd_dia$ctl02$btn_adicionar" value="Confirmar Reserva" id="ctl00_CPC_dps_data_reserva_grd_dia_ctl02_btn_adicionar" tabindex="1" title="Confirmar" style="height:22px;width:125px;" />
+                        </td>
+				</tr><tr style="color:#333333;background-color:White;white-space:nowrap;">
+					<td style="width:90px;white-space:nowrap;">30/11/2025</td><td style="font-size:11px;width:100px;white-space:nowrap;">20:00 - 07:59</td><td style="font-size:11px;width:307px;white-space:nowrap;">032a.Delegacia de Pol&#237;cia</td><td style="font-size:11px;width:257px;white-space:nowrap;">GIP DLEGAL 1</td><td align="center">
+                            <itemstyle width="125px" wrap="False" />
+                            <headerstyle width="125px" wrap="False" />
+                            <input type="submit" name="ctl00$CPC$dps$data_reserva$grd_dia$ctl03$btn_adicionar" value="Confirmar Reserva" id="ctl00_CPC_dps_data_reserva_grd_dia_ctl03_btn_adicionar" tabindex="1" title="Confirmar" style="height:22px;width:125px;" />
+                        </td>
+				</tr>
+			</table>
+		</div>
+        </div>
+    
+	</div>
+    <input type="hidden" name="ctl00$CPC$dps$data_reserva$hdusuaid" id="ctl00_CPC_dps_data_reserva_hdusuaid" value="27507" />
+    <input type="submit" name="ctl00$CPC$dps$data_reserva$btn_Voltar" value="Voltar" id="ctl00_CPC_dps_data_reserva_btn_Voltar" tabindex="55" style="color:Black;width: 100px; position: absolute; left: 365px; top: 473px;" />
+</div>
+                </div>
+            </div>
+        
+</div>
+</div>
+<div id="ctl00_CPC_dps_div_justificativa_Cancela_Reserva" style="display: none;
+    z-index: 10050; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;
+    background: url(../imagens/login/bg-popup.png);">
+    <div id="ctl00_CPC_dps_uppJustCancelaReserva">
+	
+            <div id="ctl00_CPC_dps_Div2" style="margin-left: -250px; margin-top: -150px; top: 50%;
+                left: 50%; width: 505px; height: 240px; color: #000000; background: #FFFFFF;
+                position: absolute; border: 1px solid #d0d0d0;">
+                <div id="ctl00_CPC_dps_Div3" style="background-color: #1A2B61; width: 100%; height: 20px;
+                    padding-top: 3px; padding-left: 0px; margin-bottom: 10px; text-align: left;">
+                    <a id="ctl00_CPC_dps_A1" style="text-decoration: none; font-weight: bold; font: normal 14px arial;
+                        color: #FFFFFF; margin-left: 5px;">Remover Reserva</a>
+                </div>
+                <div id="ctl00_CPC_dps_Div4">
+                    
+                    <span id="ctl00_CPC_dps_Label4" style="top: 35px; left: 4px;
+                        position: absolute; color: #000;">Justificativa:</span>
+                    <textarea name="ctl00$CPC$dps$txtjustificativaCancelaReserva" rows="2" cols="20" id="ctl00_CPC_dps_txtjustificativaCancelaReserva" style="height:135px;width:485px;top: 60px;
+                        left: 4px; position: absolute;">
+</textarea>
+                    <input type="submit" name="ctl00$CPC$dps$btnCancelaReserva" value="Remover Reserva" onclick="return confirm(&#39;Você tem certeza que deseja cancelar essa reserva?&#39;);" id="ctl00_CPC_dps_btnCancelaReserva" tabindex="1" style="color:Black;width: 110px; position: absolute; left: 270px; top: 205px;
+                        cursor: pointer;" />
+                    <input type="submit" name="ctl00$CPC$dps$btnRetornarCancelaReserva" value="Retornar" id="ctl00_CPC_dps_btnRetornarCancelaReserva" style="color:Black;width: 110px;
+                        position: absolute; left: 390px; top: 205px; cursor: pointer;" />
+                    <input type="hidden" name="ctl00$CPC$dps$hdcabcelareservavagaid" id="ctl00_CPC_dps_hdcabcelareservavagaid" />
+                </div>
+            </div>
+        
+</div>
+</div>
+
+            |0|hiddenField|__EVENTTARGET||0|hiddenField|__EVENTARGUMENT||27692|hiddenField|__VIEWSTATE|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|8|hiddenField|__VIEWSTATEGENERATOR|3B430286|0|hiddenField|__VIEWSTATEENCRYPTED||4864|hiddenField|__EVENTVALIDATION|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|0|asyncPostBackControlIDs|||0|postBackControlIDs|||166|updatePanelIDs||tctl00$UPDcabecalho,,tctl00$corpox,,tctl00$CPC$Upddistribuivbdps,,tctl00$CPC$dps$uppgriddias,,tctl00$CPC$dps$upd_tela_resultado,,tctl00$CPC$dps$uppJustCancelaReserva,|94|childUpdatePanelIDs||ctl00$CPC$dps$uppgriddias,ctl00$CPC$dps$upd_tela_resultado,ctl00$CPC$dps$uppJustCancelaReserva|28|panelsToRefreshIDs||ctl00$CPC$Upddistribuivbdps,|2|asyncPostBackTimeout||90|30|formAction||./FRMRESERVARVAGASERVIDOR.ASPX|44|scriptBlock|ScriptContentNoTags|window.alert('Vaga Reservada com sucesso!');|81|scriptBlock|ScriptContentNoTags|document.getElementById('ctl00_CPC_dps_div_tela_resultado').style.display='none';|
